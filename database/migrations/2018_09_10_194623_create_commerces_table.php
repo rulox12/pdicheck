@@ -16,6 +16,7 @@ class CreateCommercesTable extends Migration
         Schema::create('commerces', function (Blueprint $table) {
             $table->increments('id_commerce');
             $table->string('name');
+            $table->string('nit');
             $table->timestamps();
         });
     }

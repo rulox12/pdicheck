@@ -16,9 +16,14 @@
 });*/
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('commerce/index');
 });
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::post('help', 'helpController@createcommerce')->name('help');
+
+Route::get('/createsite', 'helpController@indexsite');
+
