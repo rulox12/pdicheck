@@ -9,7 +9,9 @@ class helpController extends Controller
 {
     public function createcommerce(Request $request)
     {
-       	$commerce = commerce::create($request);
+       	commerce::create($request);
+       	$commerce = commerce::All();       	
+       	return view('site.index', compact('commerce'));
     }
 
     public function indexsite()

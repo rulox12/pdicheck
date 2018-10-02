@@ -10,7 +10,7 @@
 <body>
   <div class="container">
     <div class="row">
-    <a class="nav-link" href="{{ url('/transacciones/create') }}">Crear sitio</a>
+    <a class="nav-link" href="{{ route('site') }}">Crear sitio</a>
     </div>
     @yield('content')
   </div>
