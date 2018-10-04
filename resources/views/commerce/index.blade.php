@@ -1,4 +1,4 @@
-@extends('layout')
+@extends('admin.layout')
 
 @section('content')
   <style>
@@ -20,7 +20,7 @@
         </ul>
       </div><br />
     @endif
-      <form method="post" action="{{ route('help') }}">
+      <form method="POST" action="{{ route('createcomm') }}">
           <div class="form-group">
               @csrf
               <label for="name">NIT:</label>

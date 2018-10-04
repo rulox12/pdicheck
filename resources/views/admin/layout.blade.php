@@ -294,7 +294,7 @@ desired effect
 
     <!-- Main content -->
     <section class="content container-fluid">
-
+      @yield('content')
       <!--------------------------
         | Your Page Content Here |
         -------------------------->
