@@ -7,7 +7,7 @@
 @section('content')
   <div class="box">
     <div class="box-header">
-      <h3 class="box-title">Comercios</h3>
+      <h3 class="box-title">Sitios</h3>
     </div>
     <!-- /.box-header -->
     <div class="box-body">
@@ -15,7 +15,7 @@
         <thead>
           <tr>
             <th>Nombre</th>
-            <th>Nit</th>
+            <th>Comercio</th>
           </tr>
         </thead>
         <tbody>

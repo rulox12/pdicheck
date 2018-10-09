@@ -29,7 +29,7 @@ Route::get('createcommv', function () {
     return view('commerce/index');
 })->name('createcommv');
 
-Route::get('/createsite', 'helpController@indexsite')->name('site');
+Route::get('createsitev', 'Admin\siteController@indexv')->name('createsitev');
 
 Route::get('listCommerce', 'Admin\commerceController@index')->name('listCommerce');
 
