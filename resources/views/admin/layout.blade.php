@@ -262,16 +262,15 @@ desired effect
       <ul class="sidebar-menu" data-widget="tree">
         <li class="header">HEADER</li>
         <!-- Optionally, you can add icons to the links -->
-        
         <li class="treeview">
-          <a href="{{ route('listCommerce') }}"><i class="fa fa-link"></i> <span>Comercios</span>
+          <a href="#"><i class="fa fa-link"></i> <span>Comercios</span>
             <span class="pull-right-container">
                 <i class="fa fa-angle-left pull-right"></i>
               </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="#">Ver comercios</a></li>
-            <li><a href="#">Crear comercio</a></li>
+            <li><a href="{{ route('listCommerce') }}">Ver comercios</a></li>
+            <li><a href="{{ route('createcommv') }}">Crear comercio</a></li>
           </ul>
         </li>
         <li class="treeview">
@@ -305,17 +304,8 @@ desired effect
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
-    <section class="content-header">
-      <h1>
-        Page Header
-        <small>Optional description</small>
-      </h1>
-      <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-dashboard"></i> Level</a></li>
-        <li class="active">Here</li>
-      </ol>
-    </section>
-
+    @yield('Page header')
+    
     <!-- Main content -->
     <section class="content container-fluid">
       @yield('content')

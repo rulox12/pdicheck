@@ -4,8 +4,9 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\commerce;
 
-class Commerce extends Controller
+class commerceController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,7 +16,7 @@ class Commerce extends Controller
     public function index()
     {
         $commerce = commerce::All();
-        return view('site.index', compact('commerce'));    
+        return view('commerce.table', compact('commerce'));    
     }
 
     /**
@@ -26,8 +27,7 @@ class Commerce extends Controller
     public function create(Request $request)
     {
         commerce::create($request);
-        $commerce = commerce::All(); 
-        echo "hola";       
+        $commerce = commerce::All();       
         return view('site.index', compact('commerce'));
     }
 
