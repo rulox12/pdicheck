@@ -15,9 +15,6 @@ Route::get('/', function () {
     return view('admin.login');
 });
 
-Route::get('/', function () {
-    return view('welcome');
-});
 
 Auth::routes();
 
