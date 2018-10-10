@@ -35,3 +35,7 @@ Route::get('listCommerce', 'Admin\commerceController@index')->name('listCommerce
 
 
 
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
