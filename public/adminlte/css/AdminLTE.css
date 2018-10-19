@@ -1778,6 +1778,9 @@ a:focus {
   border-bottom-left-radius: 3px;
   padding: 10px;
 }
+.box-body.mdp{
+  display: none !important;
+}
 .no-header .box-body {
   border-top-right-radius: 3px;
   border-top-left-radius: 3px;
