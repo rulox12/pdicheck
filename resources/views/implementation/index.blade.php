@@ -17,16 +17,13 @@
       @endsection
       <!-- Main content -->
       <section class="content">
-        <div class="progress">
-          <div class="progress-bar" role="progressbar" style="width: 12%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">25%</div>
-        </div>
         <div class="row">
           <!-- left column -->
           <div class="col-md-12">
             <!-- general form elements -->
             <div class="box box-success">
               <div class="box-header with-border">
-                <h3 class="box-title">Nombre implementación</h3>
+                <h3 class="box-title">Crear implementación</h3>
               </div>
               @if ($errors->any())
                 <div class="alert alert-danger">
@@ -41,197 +38,68 @@
                 <div class="box-body">
                   <div class="form-group">
                     @csrf
-                    <h4 class="" for="name">Comercio: xxxx</h4>
-                    <h4 for="exampleInputPassword1">Lider de Proyecto: xxx</h4>
-                    <h4 for="exampleInputPassword1">Ingeniero: xxx</h4>
-                    <h4 for="exampleInputPassword1">Fecha de Inicio: xxx</h4>
-                    <h4 for="exampleInputPassword1">Modelo: xxx</h4>
+                    <label for="name">Comercio</label>
+                    <select type="text" class="form-control" name="commerce" required >
+                      @foreach ($commerce as $item2)
+                          <option value="$item2->id_commerce">{{ $item2->name  }}</option>
+                      @endforeach
+                    </select>
                   </div>
-                  <div class="box box-success collapsed-box">
-                    <div class="box-header with-border">
-                      <h3 class="box-title">Tarjetas de Credito</h3>
-                      <div class="box-tools pull-right">
-                        <button type="button" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse">
-                          <i class="fa fa-plus"></i>
-                        </button>
-                      </div>
-                    </div>
-                    <div class="box-body">
-                      <div class="form-group">                     
-                        <div class ="row">
-                          <div class="col-md-5 checkbox">
-                            <label><input type="checkbox" value="">Solicitud Cartas de terminales</label>
-                          </div>
-                          <div class="col-md-6">
-                            <textarea class="col-md-12"></textarea>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="form-group">                     
-                        <div class ="row">
-                          <div class="col-md-5 checkbox">
-                            <label><input type="checkbox" value="">Solicitud terminales</label>
-                          </div>
-                          <div class="col-md-6">
-                            <textarea class="col-md-12"></textarea>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="form-group">                     
-                        <div class ="row">
-                          <div class="col-md-5 checkbox">
-                            <label><input type="checkbox" value="">Cargue terminales</label>
-                          </div>
-                          <div class="col-md-6">
-                            <textarea class="col-md-12"></textarea>
-                          </div>
-                        </div>
-                      </div>                      
-                      <div class="form-group">                     
-                        <div class ="row">
-                          <div class="col-md-5 checkbox">
-                            <label><input type="checkbox" value="">Pruebas terminales</label>
-                          </div>
-                          <div class="col-md-6">
-                            <textarea class="col-md-12"></textarea>
-                          </div>
-                        </div>
-                      </div>
-                      <!-- /.box-body -->
-                    </div>
+                  <div class="form-group">
+                    <label for="exampleInputPassword1">Sitio</label>
+                    <input type="text" class="form-control" name="name" placeholder="nombre">
                   </div>
-                  <div class="box box-success collapsed-box">
-                    <div class="box-header with-border">
-                      <h3 class="box-title">PSE</h3>
-                      <div class="box-tools pull-right">
-                        <button type="button" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse">
-                          <i class="fa fa-plus"></i>
-                        </button>
-                      </div>
-                    </div>
-                    <div class="box-body">
-                      <div class="form-group">                     
-                        <div class ="row">
-                          <div class="col-md-5 checkbox">
-                            <label><input type="checkbox" value="">Afiliación del comercio ante ACH</label>
-                          </div>
-                          <div class="col-md-6">
-                            <textarea class="col-md-12"></textarea>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="form-group">                     
-                        <div class ="row">
-                          <div class="col-md-5 checkbox">
-                            <label><input type="checkbox" value="">Configuración de códigos de prueba PSE</label>
-                          </div>
-                          <div class="col-md-6">
-                            <textarea class="col-md-12"></textarea>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="form-group">                     
-                        <div class ="row">
-                          <div class="col-md-5 checkbox">
-                            <label><input type="checkbox" value="">Crear código de servicio y cuenta recaudadora</label>
-                          </div>
-                          <div class="col-md-6">
-                            <textarea class="col-md-12"></textarea>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="form-group">                     
-                        <div class ="row">
-                          <div class="col-md-5 checkbox">
-                            <label><input type="checkbox" value="">Asociar cuenta y código de servicio</label>
-                          </div>
-                          <div class="col-md-6">
-                            <textarea class="col-md-12"></textarea>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="form-group">                     
-                        <div class ="row">
-                          <div class="col-md-5 checkbox">
-                            <label><input type="checkbox" value="">Configurar datos reales de PSE en la consola</label>
-                          </div>
-                          <div class="col-md-6">
-                            <textarea class="col-md-12"></textarea>
-                          </div>
-                        </div>
-                      </div>
-                      <!-- /.box-body -->
-                    </div>
+                  <div class="form-group">
+                    <label for="name">Ingeniero</label>
+                    <select type="text" class="form-control" name="commerce" required >
+                      
+                    </select>
                   </div>
-                  <div class="box box-success collapsed-box">
-                    <div class="box-header with-border">
-                      <h3 class="box-title">TUYA</h3>
-                      <div class="box-tools pull-right">
-                        <button type="button" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse">
-                          <i class="fa fa-plus"></i>
-                        </button>
-                      </div>
+                  <div class="form-group">
+                    <label for="name">Tipo de integración</label>
+                    <select type="text" class="form-control" name="commerce" required >
+                      
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <label for="name">Metodo de compensación</label>
+                    <select type="text" class="form-control" name="commerce" required >
+                      <option>Agregador</option>
+                      <option>GetWay</option>
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <div class="checkbox">
+                      <label>
+                        <input type="checkbox">
+                        Tarjetas de Credito
+                      </label>
                     </div>
-                    <div class="box-body">
-                      <div class="form-group">                     
-                        <div class ="row">
-                          <div class="col-md-5 checkbox">
-                            <label><input type="checkbox" value="">Afiliación del comercio ante ACH</label>
-                          </div>
-                          <div class="col-md-6">
-                            <textarea class="col-md-12"></textarea>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="form-group">                     
-                        <div class ="row">
-                          <div class="col-md-5 checkbox">
-                            <label><input type="checkbox" value="">Configuración de códigos de prueba PSE</label>
-                          </div>
-                          <div class="col-md-6">
-                            <textarea class="col-md-12"></textarea>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="form-group">                     
-                        <div class ="row">
-                          <div class="col-md-5 checkbox">
-                            <label><input type="checkbox" value="">Crear código de servicio y cuenta recaudadora</label>
-                          </div>
-                          <div class="col-md-6">
-                            <textarea class="col-md-12"></textarea>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="form-group">                     
-                        <div class ="row">
-                          <div class="col-md-5 checkbox">
-                            <label><input type="checkbox" value="">Asociar cuenta y código de servicio</label>
-                          </div>
-                          <div class="col-md-6">
-                            <textarea class="col-md-12"></textarea>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="form-group">                     
-                        <div class ="row">
-                          <div class="col-md-5 checkbox">
-                            <label><input type="checkbox" value="">Configurar datos reales de PSE en la consola</label>
-                          </div>
-                          <div class="col-md-6">
-                            <textarea class="col-md-12"></textarea>
-                          </div>
-                        </div>
-                      </div>
-                      <!-- /.box-body -->
+                    <div class="checkbox">
+                      <label>
+                        <input type="checkbox">
+                        PSE
+                      </label>
+                    </div>
+                    <div class="checkbox">
+                      <label>
+                        <input type="checkbox">
+                        TUYA
+                      </label>
+                    </div>
+                    <div class="checkbox">
+                      <label>
+                        <input type="checkbox">
+                        Efectivo
+                      </label>
                     </div>
                   </div>
                 </div>
-
+                
                 <div class="box-footer">
-                  <button type="submit" class="btn btn-primary">Crear Comercio</button>
+                  <button type="submit" class="btn btn-primary">Crear Implementación</button>
                 </div>
-
+                
               </form>
 
             </div>
@@ -241,13 +109,6 @@
       </section>
       <!-- /.content -->
     </div>
-
 @endsection
 @section('script')
-  <script type="text/javascript">
-    $('#myCollapsible').collapse({
-      toggle: false
-    })
-    $('.collapse').collapse()
-  </script>
 @endsection

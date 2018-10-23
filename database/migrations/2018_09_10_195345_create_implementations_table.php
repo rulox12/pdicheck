@@ -26,6 +26,7 @@ class CreateImplementationsTable extends Migration
             $table->dateTime('start_date');
             $table->dateTime('end_date');
             $table->decimal('progress', 3,1);
+            $table->string('compensation');
             $table->timestamps();
         });
     }

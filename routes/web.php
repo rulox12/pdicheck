@@ -12,9 +12,8 @@
 */
 
 Route::get('/', function () {
-    return view('implementation.index');
+    return view('auth.login');
 });
-
 
 Auth::routes();
 
@@ -26,13 +25,11 @@ Route::get('createcommv', function () {
     return view('commerce/index');
 })->name('createcommv');
 
+Route::get('updateimp', function () {
+    return view('implementation/update');
+})->name('updateimp');
+
 Route::get('createsitev', 'Admin\siteController@indexv')->name('createsitev');
+Route::get('implementation', 'Admin\implementationController@indexv')->name('implementation');
 
 Route::get('listCommerce', 'Admin\commerceController@index')->name('listCommerce');
-
-
-
-
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
