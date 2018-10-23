@@ -57,9 +57,9 @@
                         </button>
                       </div>
                     </div>
-                    <div class="box-body">
+                    <div class="box-body" style="display: none;">
                       <div class="form-group">                     
-                        <div class ="row">
+                        <div class="row">
                           <div class="col-md-5 checkbox">
                             <label><input type="checkbox" value="">Solicitud Cartas de terminales</label>
                           </div>
@@ -69,7 +69,7 @@
                         </div>
                       </div>
                       <div class="form-group">                     
-                        <div class ="row">
+                        <div class="row">
                           <div class="col-md-5 checkbox">
                             <label><input type="checkbox" value="">Solicitud terminales</label>
                           </div>
@@ -79,7 +79,7 @@
                         </div>
                       </div>
                       <div class="form-group">                     
-                        <div class ="row">
+                        <div class="row">
                           <div class="col-md-5 checkbox">
                             <label><input type="checkbox" value="">Cargue terminales</label>
                           </div>
@@ -89,7 +89,7 @@
                         </div>
                       </div>                      
                       <div class="form-group">                     
-                        <div class ="row">
+                        <div class="row">
                           <div class="col-md-5 checkbox">
                             <label><input type="checkbox" value="">Pruebas terminales</label>
                           </div>
@@ -110,7 +110,7 @@
                         </button>
                       </div>
                     </div>
-                    <div class="box-body">
+                    <div class="box-body" style="display: none;">
                       <div class="form-group">                     
                         <div class ="row">
                           <div class="col-md-5 checkbox">
@@ -173,7 +173,7 @@
                         </button>
                       </div>
                     </div>
-                    <div class="box-body">
+                    <div class="box-body" style="display: none;">
                       <div class="form-group">                     
                         <div class ="row">
                           <div class="col-md-5 checkbox">
