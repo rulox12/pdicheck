@@ -30,7 +30,7 @@ Route::get('updateimp', function () {
 })->name('updateimp');
 
 Route::get('createsitev', 'Admin\siteController@indexv')->name('createsitev');
-//Route::get('implementation', 'Admin\implementationController@indexv')->name('implementation');
+//git Route::get('implementation', 'Admin\implementationController@indexv')->name('implementation');
 
 Route::get('listCommerce', 'Admin\commerceController@index')->name('listCommerce');
 
