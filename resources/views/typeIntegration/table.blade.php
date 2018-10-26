@@ -7,26 +7,32 @@
 @section('content')
   <div class="box">
     <div class="box-header">
-      <h3 class="box-title">Comercios</h3>
+      <h3 class="box-title">Tipo Integración</h3>
     </div>
     <!-- /.box-header -->
     <div class="box-body">
-        @if (Session::has('message'))
-            <p class='alert alert-success'>{{ Session::get('message') }}  </p>
-        @endif
-
       <table id="example1" class="table table-striped">
         <thead>
           <tr>
-            <th>Nombre</th>
-            <th>Eliminar</th>
+            <th scope="col">Nombre</th>
+            <th scope="col">Eliminar</th>
           </tr>
         </thead>
         <tbody>
         @foreach ($typeint as $item)
           <tr>
             <td>{{ $item->name  }}</td>
-            <td><a href="">Eliminar</a></td>
+            <td>
+                <form method="post" action="{!! route('integrationtype.destroy', [$item->id_type_integration]) !!}">
+                    {!! csrf_field() !!}
+                    {!! method_field('DELETE') !!}
+                    <button class="btn btn-danger" type="submit"
+                        onclick="return confirm('Are you sure you want to delete this merchant?')">
+                        <i class="glyphicon glyphicon-trash"></i>
+                        Eliminar
+                    </button>
+                </form>
+            </td>
           </tr>
         @endforeach
         </tbody>
@@ -36,10 +42,6 @@
           </tr>
         </tfoot>
       </table>
-    </div>
-    <!-- /.box-body -->
-  </div>
-  
 
           
 @endsection

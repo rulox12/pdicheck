@@ -83,11 +83,10 @@ class typeIntegrationController extends Controller
      * @param  \App\typeIntegration  $typeIntegration
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($id_type_integration)
     {
         //
-        typeIntegration::destroy($id);
-        Session::flash('message', 'El typo de integracion fue eliminado');
+        typeIntegration::destroy($id_type_integration);
         return redirect()->route('integrationtype.index');
     }
 }

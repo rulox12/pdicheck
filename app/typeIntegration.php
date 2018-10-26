@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 
 class typeIntegration extends Model
 {
+    protected $primaryKey = 'id_type_integration';
+
     protected $fillable = [
         'name'  
         
