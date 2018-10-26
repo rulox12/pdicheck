@@ -19,13 +19,14 @@
         <thead>
           <tr>
             <th>Nombre</th>
+            <th>Eliminar</th>
           </tr>
         </thead>
         <tbody>
         @foreach ($typeint as $item)
           <tr>
             <td>{{ $item->name  }}</td>
-            <a href="{{ route('integrationtype.destroy') }}">Eliminar</a>
+            <td><a href="">Eliminar</a></td>
           </tr>
         @endforeach
         </tbody>
