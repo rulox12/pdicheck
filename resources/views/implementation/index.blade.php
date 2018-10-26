@@ -5,8 +5,10 @@
 @endsection
 
 @section('content')
-  
-  <div class="content-fluid">
+@foreach ($arrayDetalle as $item2)
+                          <option>{{ $item2->name  }}</option>
+                      @endforeach
+<div class="content-fluid">
       <!-- Content Header (Page header) -->
       @section('Page header')
         <section class="content-header">
