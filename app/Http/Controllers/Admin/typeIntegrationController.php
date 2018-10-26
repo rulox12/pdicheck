@@ -16,7 +16,8 @@ class typeIntegrationController extends Controller
     public function index()
     {
         //
-       
+        $typeint=typeIntegration::All();
+        return view('typeIntegration.table',compact('typeint'));
     }
 
     /**
@@ -27,6 +28,7 @@ class typeIntegrationController extends Controller
     public function create()
     {
         //
+        return view('typeIntegration.create');
     }
 
     /**
@@ -81,8 +83,11 @@ class typeIntegrationController extends Controller
      * @param  \App\typeIntegration  $typeIntegration
      * @return \Illuminate\Http\Response
      */
-    public function destroy(typeIntegration $typeIntegration)
+    public function destroy($id)
     {
         //
+        typeIntegration::destroy($id);
+        Session::flash('message', 'El typo de integracion fue eliminado');
+        return redirect()->route('integrationtype.index');
     }
 }
