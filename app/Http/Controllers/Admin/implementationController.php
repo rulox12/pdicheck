@@ -16,8 +16,8 @@ class implementationController extends Controller
      */
     public function index()
     {
-        $commerce = sites::All();
-        return view('commerce.table', compact('commerce'));    
+        $commerce = commerce::All();
+        return view('implementation.index', compact('commerce'));     
     }
 
     public function indexv()
@@ -32,9 +32,7 @@ class implementationController extends Controller
      */
     public function create(Request $request)
     {
-        commerce::create($request);
-        $commerce = commerce::All();       
-        return view('site.index', compact('commerce'));
+
     }
 
     /**

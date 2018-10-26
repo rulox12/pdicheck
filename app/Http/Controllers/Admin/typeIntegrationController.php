@@ -38,8 +38,7 @@ class typeIntegrationController extends Controller
     public function store(Request $request)
     {
         //
-        $p=typeIntegration::create($request);
-        dd($p);  
+        $p=typeIntegration::create($request); 
     }
 
     /**

@@ -11,9 +11,6 @@
 |
 */
 
-Route::get('/', function () {
-    return view('auth.login');
-});
 
 Auth::routes();
 
@@ -30,14 +27,10 @@ Route::get('updateimp', function () {
 })->name('updateimp');
 
 Route::get('createsitev', 'Admin\siteController@indexv')->name('createsitev');
-Route::get('implementation', 'Admin\implementationController@indexv')->name('implementation');
+//git Route::get('implementation', 'Admin\implementationController@indexv')->name('implementation');
 
 Route::get('listCommerce', 'Admin\commerceController@index')->name('listCommerce');
 
-Route::post('createType', 'Admin\typeIntegrationController@store')->name('createType');
-
 Route::resource('integrationtype', 'Admin\typeIntegrationController');
 
-Route::get('createTypev', function () {
-    return view('typeIntegration/create');
-})->name('createTypev');
+Route::resource('/implementation', 'admin\implementationController');
