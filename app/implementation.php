@@ -21,13 +21,13 @@ class implementation extends Model
     {
         $implementation = new implementation([
             'id_site'       =>$id_site,
-            'id_type_integration'  =>$request->get('documentType'),
-            'leader'        =>$request->get('firtsName'),
-            'engineer'      =>$request->get('lastName'),
-            'start_date'    =>$request->get('company'),
-            'end_date'      =>$request->get('emailAddress'),
-            'progress'      =>$request->get('address'),
-            'compensation'  =>$request->get('city')
+            'id_type_integration'  =>$request->get('id_type_integration'),
+            'leader'        =>$request->get('id_leader'),
+            'engineer'      =>$request->get('id_enginer'),
+            'start_date'    =>$request->get('start_date'),
+            'end_date'      =>$request->get('start_date'),
+            'progress'      => 0,
+            'compensation'  =>$request->get('compensation_id')
         ]);
         $implementation->save();
         return $implementation;

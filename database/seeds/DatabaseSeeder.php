@@ -15,5 +15,8 @@ class DatabaseSeeder extends Seeder
     $this->call(RoleTableSeeder::class);
     // Los usuarios necesitarán los roles previamente generados
     $this->call(UserTableSeeder::class);
+    $this->call(commerceTableSeeder::class);
+    $this->call(payment_methodsTableSeeder::class);
+    $this->call(typeintegrationTableSeeder::class);
     }
 }
