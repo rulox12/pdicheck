@@ -46,23 +46,23 @@
                     </select>
                   </div>
                   <div class="form-group">
-                    <label for="exampleInputPassword1">Sitio</label>
-                    <input type="text" class="form-control" name="name" placeholder="nombre">
+                    <label for="sitio">Sitio</label>
+                    <input type="text" class="form-control" name="sitio" placeholder="nombre">
                   </div>
                   <div class="form-group">
-                    <label for="name">Ingeniero</label>
-                    <select type="text" class="form-control" name="commerce" required >
+                    <label for="ingeniero">Ingeniero</label>
+                    <select type="text" class="form-control" name="ingeniero" required >
                       
                     </select>
                   </div>
                   <div class="form-group">
-                    <label for="name">Tipo de integración</label>
-                    <select type="text" class="form-control" name="commerce" required >
+                    <label for="tIntegración">Tipo de integración</label>
+                    <select type="text" class="form-control" name="tIntegración" required >
                       
                     </select>
                   </div>
                   <div class="form-group">
-                    <label for="name">Metodo de compensación</label>
+                    <label for="commerce">Metodo de compensación</label>
                     <select type="text" class="form-control" name="commerce" required >
                       <option>Agregador</option>
                       <option>GetWay</option>
@@ -71,37 +71,34 @@
                   <div class="form-group">
                     <div class="checkbox">
                       <label>
-                        <input type="checkbox">
+                        <input name="TC" type="checkbox">
                         Tarjetas de Credito
                       </label>
                     </div>
                     <div class="checkbox">
                       <label>
-                        <input type="checkbox">
+                        <input name="PSE" type="checkbox">
                         PSE
                       </label>
                     </div>
                     <div class="checkbox">
                       <label>
-                        <input type="checkbox">
+                        <input name="TU" type="checkbox">
                         TUYA
                       </label>
                     </div>
                     <div class="checkbox">
                       <label>
-                        <input type="checkbox">
+                        <input name="EF"type="checkbox">
                         Efectivo
                       </label>
                     </div>
                   </div>
                 </div>
-                
                 <div class="box-footer">
                   <button type="submit" class="btn btn-primary">Crear Implementación</button>
                 </div>
-                
               </form>
-
             </div>
           </div>
         </div>
@@ -109,6 +106,4 @@
       </section>
       <!-- /.content -->
     </div>
-@endsection
-@section('script')
 @endsection

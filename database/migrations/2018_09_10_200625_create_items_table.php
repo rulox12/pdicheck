@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateProcessesTable extends Migration
+class CreateItemsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,11 @@ class CreateProcessesTable extends Migration
      */
     public function up()
     {
-        Schema::create('processes', function (Blueprint $table) {
-            $table->increments('id_process');
-            $table->string('name');
-            $table->string('level');
+        Schema::create('items', function (Blueprint $table) {
+            $table->increments('id_item');
+            $table->integer('id_payment_methods')->unsigned();
+            $table->foreign('id_payment_methods')->references('id_payment_methods')->on('payment_methods');
+            $table->string('description');
             $table->timestamps();
         });
     }
@@ -28,6 +29,6 @@ class CreateProcessesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('processes');
+        Schema::dropIfExists('items');
     }
 }
