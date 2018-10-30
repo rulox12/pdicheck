@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use App\site;
 use App\commerce;
@@ -29,15 +30,27 @@ class implementationController extends Controller
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
+     * route-> implementation
      */
     public function create(Request $request)
     {
+        $commerce = commerce::All();
+        $rol = DB::table('roles')->where('name', 'enginer')->first();
+        $idusers = DB::table('role_user')->where('role_id', $rol->id)->get();
+        $arrayDetalle = Array();
+        foreach($idusers as $iduser){
+            $user = DB::table('users')->find($iduser->user_id);
+            $arrayDetalle[] = $user;
+        }
+        $typeintegrations = DB::table('type_integrations')->get();
+        dd($typeintegrations);
 
+        return view('implementation.index', compact('commerce','arrayDetalle','typeintegrations'));  
     }
 
     /**
      * Store a newly created resource in storage.
-     *
+     *|
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
