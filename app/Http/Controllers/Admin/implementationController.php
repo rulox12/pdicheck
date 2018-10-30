@@ -43,7 +43,6 @@ class implementationController extends Controller
             $arrayDetalle[] = $user;
         }
         $typeintegrations = DB::table('type_integrations')->get();
-        dd($typeintegrations);
 
         return view('implementation.index', compact('commerce','arrayDetalle','typeintegrations'));  
     }
@@ -56,7 +55,10 @@ class implementationController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $site  = site::create($request->id_commerce,$request);
+        $implementation = new implementation($site->id,$request);
+        $implementation->
+
     }
 
     /**

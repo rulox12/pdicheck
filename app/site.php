@@ -13,14 +13,14 @@ class site extends Model
         
     ];
     
-    public static function create(Request $request)
+    public static function create(string $id,Request $request)
     {
-        $commerce = new commerce([
-            'id_commerce'   =>$request->get('id_commerce'),
+        $site = new sites([
+            'id_commerce'   =>$id,
             'name'  		=>$request->get('name')
         ]);
-        $commerce->save();
-        return $commerce;
+        $site->save();
+        return $site;
     }
 }
 
