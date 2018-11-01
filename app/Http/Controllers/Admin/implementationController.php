@@ -113,9 +113,10 @@ class implementationController extends Controller
         ->join('commerces', 'commerces.id_commerce', '=','sites.id_commerce')
         ->join('users as leader', 'leader.id','=','implementations.leader')
         ->join('users as engineer', 'engineer.id','=','implementations.engineer')
+        ->join('type_integrations', 'type_integrations.id_type_integration','=','implementations.id_type_integration')
         ->where('implementations.id_implementation', $id_implementation)
-        ->select('implementations.*', 'sites.name AS name_site','leader.name AS name_leader','engineer.name AS name_engineer')
-        ->get();      
+        ->select('implementations.*', 'sites.name AS name_site','leader.name AS name_leader','engineer.name AS name_engineer','commerces.name AS name_commerce','type_integrations.name AS name_typeintegration')
+        ->get();
         dd($implementation);  
     }
 
