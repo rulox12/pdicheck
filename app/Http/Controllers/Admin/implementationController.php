@@ -86,7 +86,7 @@ class implementationController extends Controller
             $paymentmethodimplementation = payment_method_implementation::create(
                 $implementation->id,5);
         }
-        this->index();
+        $this->index();
     }
 
     /**
