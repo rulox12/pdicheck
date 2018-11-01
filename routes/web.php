@@ -16,21 +16,10 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::post('createcomm', 'Admin\commerceController@create')->name('createcomm');
+Route::resource('sites', 'Admin\siteController');
 
-Route::get('createcommv', function () {
-    return view('commerce/index');
-})->name('createcommv');
-
-Route::get('updateimp', function () {
-    return view('implementation/update');
-})->name('updateimp');
-
-Route::get('createsitev', 'Admin\siteController@indexv')->name('createsitev');
-//git Route::get('implementation', 'Admin\implementationController@indexv')->name('implementation');
-
-Route::get('listCommerce', 'Admin\commerceController@index')->name('listCommerce');
+Route::resource('commerces', 'Admin\commerceController');
 
 Route::resource('integrationtype', 'Admin\typeIntegrationController');
 
-Route::resource('/implementation', 'admin\implementationController');
+Route::resource('implementation', 'admin\implementationController');

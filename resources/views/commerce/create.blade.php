@@ -31,7 +31,7 @@
                   </ul>
                 </div><br />
               @endif
-              <form method="POST" action="{{ route('createcomm') }}" role="form">
+              <form method="POST" action="{{ route('commerces.store') }}" role="form">
                 <div class="box-body">
                   <div class="form-group">
                     @csrf

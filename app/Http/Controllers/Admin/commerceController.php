@@ -24,11 +24,9 @@ class commerceController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create(Request $request)
+    public function create()
     {
-        commerce::create($request);
-        $commerce = commerce::All();       
-        return view('site.index', compact('commerce'));
+        return view('commerce.create');
     }
 
     /**
@@ -40,6 +38,9 @@ class commerceController extends Controller
     public function store(Request $request)
     {
         //
+        commerce::create($request);
+        $commerce = commerce::All();       
+        return view('site.index', compact('commerce'));
     }
 
     /**

@@ -5,9 +5,7 @@
 @endsection
 
 @section('content')
-@foreach ($arrayDetalle as $item2)
-                          <option>{{ $item2->name  }}</option>
-                      @endforeach
+
 <div class="content-fluid">
       <!-- Content Header (Page header) -->
       @section('Page header')
@@ -36,14 +34,14 @@
                   </ul>
                 </div><br />
               @endif
-              <form method="POST" action="{{ route('createcomm') }}" role="form">
+              <form method="POST" action="{{ route('implementation.store') }}" role="form">
                 <div class="box-body">
                   <div class="form-group">
                     @csrf
                     <label for="name">Comercio</label>
                     <select type="text" class="form-control" name="commerce" required >
-                      @foreach ($commerce as $item2)
-                          <option value="$item2->id_commerce">{{ $item2->name  }}</option>
+                      @foreach ($commerce as $item)
+                          <option value="{{ $item->id_commerce }}">{{ $item->name  }}</option>
                       @endforeach
                     </select>
                   </div>
@@ -54,7 +52,10 @@
                   <div class="form-group">
                     <label for="ingeniero">Ingeniero</label>
                     <select type="text" class="form-control" name="ingeniero" required >
-                      
+
+                        @foreach ($arrayDetalle as $item)
+                          <option value="{{ $item->id }}">{{ $item->name  }}</option>
+                        @endforeach
                     </select>
                   </div>
                   <div class="form-group">
@@ -73,25 +74,25 @@
                   <div class="form-group">
                     <div class="checkbox">
                       <label>
-                        <input name="TC" type="checkbox">
+                        <input name="MP" value="1" type="checkbox">
                         Tarjetas de Credito
                       </label>
                     </div>
                     <div class="checkbox">
                       <label>
-                        <input name="PSE" type="checkbox">
+                        <input name="MP" value="2" type="checkbox">
                         PSE
                       </label>
                     </div>
                     <div class="checkbox">
                       <label>
-                        <input name="TU" type="checkbox">
+                        <input name="MP" value="3" type="checkbox">
                         TUYA
                       </label>
                     </div>
                     <div class="checkbox">
                       <label>
-                        <input name="EF"type="checkbox">
+                        <input name="MP" value="4" type="checkbox">
                         Efectivo
                       </label>
                     </div>

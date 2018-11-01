@@ -8,7 +8,9 @@
   <div class="box">
     <div class="box-header">
       <h3 class="box-title">Tipo Integración</h3>
+      <a href="{{ route('integrationtype.create') }}"><button class="pull-right btn-success">Nuevo registro</button></a>
     </div>
+    
     <!-- /.box-header -->
     <div class="box-body">
       <table id="example1" class="table table-striped">

@@ -72,10 +72,6 @@ desired effect
 
     <!-- Header Navbar -->
     <nav class="navbar navbar-static-top" role="navigation">
-      <!-- Sidebar toggle button-->
-      <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
-        <span class="sr-only">Toggle navigation</span>
-      </a>
       <!-- Navbar Right Menu -->
       <div class="navbar-custom-menu">
         <ul class="nav navbar-nav">
@@ -154,8 +150,8 @@ desired effect
               </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="{{ route('listCommerce') }}">Ver comercios</a></li>
-            <li><a href="{{ route('createcommv') }}">Crear comercio</a></li>
+            <li><a href="{{ route('commerces.index') }}">Ver comercios</a></li>
+            <li><a href="{{ route('commerces.create') }}">Crear comercio</a></li>
           </ul>
         </li>
         <li class="treeview">
@@ -166,7 +162,7 @@ desired effect
           </a>
           <ul class="treeview-menu">
             <li><a href="#">Ver Sitios</a></li>
-            <li><a href="{{ route('createsitev') }}">Crear Sitios</a></li>
+            <li><a href="">Crear Sitios</a></li>
           </ul>
         </li>
         <li class="treeview">
@@ -176,8 +172,8 @@ desired effect
               </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="{{ route('updateimp') }}">Ver implementation</a></li>
-            <li><a href="">Crear implementation</a></li>
+            <li><a href="{{ route('implementation.index') }}">Ver implementation</a></li>
+            <li><a href="{{ route('implementation.create') }}">Crear implementation</a></li>
           </ul>
         </li>
         <li class="treeview">
