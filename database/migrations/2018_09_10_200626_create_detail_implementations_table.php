@@ -20,7 +20,7 @@ class CreateDetailImplementationsTable extends Migration
             $table->integer('id_item')->unsigned();
             $table->foreign('id_item')->references('id_item')->on('items');
             $table->string('status');
-            $table->text('observation');
+            $table->text('observation')->nullable();
             $table->timestamps();
         });
     }

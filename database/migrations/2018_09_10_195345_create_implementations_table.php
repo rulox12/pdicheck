@@ -24,7 +24,7 @@ class CreateImplementationsTable extends Migration
             $table->integer('engineer')->unsigned();
             $table->foreign('engineer')->references('id')->on('users');
             $table->dateTime('start_date');
-            $table->dateTime('end_date');
+            $table->dateTime('end_date')->nullable();
             $table->decimal('progress', 3,1);
             $table->string('compensation');
             $table->timestamps();
