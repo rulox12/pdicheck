@@ -42,8 +42,8 @@ class implementationController extends Controller
             $user = DB::table('users')->find($iduser->user_id);
             $arrayDetalle[] = $user;
         }
-        $typeintegrations = DB::table('type_integrations')->get();
 
+        $typeintegrations = DB::table('type_integrations')->get();
         return view('implementation.index', compact('commerce','arrayDetalle','typeintegrations'));  
     }
 

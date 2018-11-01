@@ -13,11 +13,11 @@ class payment_method_implementation extends Model
     
     public static function create(string $id_implementation,string $idpayment)
     {
-        $site = new sites([
+        $payment_method_implementation = new payment_method_implementation([
             'id_implementation'   =>$id_implementation,
             'id_payment_methods'  		=>$idpayment
         ]);
-        $site->save();
-        return $site;
+        $payment_method_implementation->save();
+        return $payment_method_implementation;
     }
 }
