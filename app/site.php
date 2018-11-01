@@ -17,7 +17,7 @@ class site extends Model
     {
         $site = new sites([
             'id_commerce'   =>$id,
-            'name'  		=>$request->get('name')
+            'name'  		=>$request->get('name_site')
         ]);
         $site->save();
         return $site;

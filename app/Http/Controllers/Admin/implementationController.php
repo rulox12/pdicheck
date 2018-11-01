@@ -55,21 +55,22 @@ class implementationController extends Controller
      */
     public function store(Request $request)
     {
+        
         $site  = site::create($request->id_commerce,$request);
         $implementation = implementation::create($site->id,$request);
-        if($request->TC){
+        if($request->TC != null){
             $paymentmethodimplementation = payment_method_implementation::create(
                 $implementation->id,1);
         }
-        if($request->PSE){
+        if($request->PSE !=  null){
             $paymentmethodimplementation = payment_method_implementation::create(
                 $implementation->id,2);
         }
-        if($request->TUYA){
+        if($request->TU !=  null){
             $paymentmethodimplementation = payment_method_implementation::create(
                 $implementation->id,3);
         }
-        if($request->Efectivo){
+        if($request->EF !=  null){
             $paymentmethodimplementation = payment_method_implementation::create(
                 $implementation->id,4);
         }
