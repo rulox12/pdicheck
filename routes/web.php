@@ -14,6 +14,10 @@
 
 Auth::routes();
 
+Route::get('/up', function(){
+    return view('implementation/update');
+});
+
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::resource('sites', 'Admin\siteController');
