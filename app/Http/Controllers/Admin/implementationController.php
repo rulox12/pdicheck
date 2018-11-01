@@ -86,7 +86,7 @@ class implementationController extends Controller
             $paymentmethodimplementation = payment_method_implementation::create(
                 $implementation->id,5);
         }
-        $this->index();
+        
     }
 
     /**
@@ -119,14 +119,42 @@ class implementationController extends Controller
         ->select('implementations.*', 'sites.name AS name_site','leader.name AS name_leader','engineer.name AS name_engineer','commerces.name AS name_commerce','type_integrations.name AS name_typeintegration')
         ->get();
 
+           
+
+        $TC = DB::table('detail_implementations')
+        ->join('items as item', 'item.id_item', '=', 'detail_implementations.id_item')
+        ->where('detail_implementations.id_implementation', $id_implementation)
+        ->where('item.id_payment_methods',1)
+        ->select('detail_implementations.*','item.description')
+        ->get();
+        $PSE = DB::table('detail_implementations')
+        ->join('items as item', 'item.id_item', '=', 'detail_implementations.id_item')
+        ->where('detail_implementations.id_implementation', $id_implementation)
+        ->where('item.id_payment_methods',2)
+        ->select('detail_implementations.*','item.description')
+        ->get();
+        $TY = DB::table('detail_implementations')
+        ->join('items as item', 'item.id_item', '=', 'detail_implementations.id_item')
+        ->where('detail_implementations.id_implementation', $id_implementation)
+        ->where('item.id_payment_methods',3)
+        ->select('detail_implementations.*','item.description')
+        ->get();
+        $EF = DB::table('detail_implementations')
+        ->join('items as item', 'item.id_item', '=', 'detail_implementations.id_item')
+        ->where('detail_implementations.id_implementation', $id_implementation)
+        ->where('item.id_payment_methods',4)
+        ->select('detail_implementations.*','item.description')
+        ->get();
+        $EFP = DB::table('detail_implementations')
+        ->join('items as item', 'item.id_item', '=', 'detail_implementations.id_item')
+        ->where('detail_implementations.id_implementation', $id_implementation)
+        ->where('item.id_payment_methods',5)
+        ->select('detail_implementations.*','item.description')
+        ->get();
+
+        dd($TC,$PSE,$TY,$EF,$EFP);
         
-        return view('implementation.update', compact('implementation'));    
-
-        /*$TC = DB::table('detail_implementations')
-        ->join('item')
-        ->where('detail_implementations.id_implementation', $id_implementation)*/
-
-
+        return view('implementation.update', compact('implementation','TC','PSE','TY','EF','EFP'));    
     }
 
     /**
