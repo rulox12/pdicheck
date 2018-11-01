@@ -86,6 +86,7 @@ class implementationController extends Controller
             $paymentmethodimplementation = payment_method_implementation::create(
                 $implementation->id,5);
         }
+        this->index();
     }
 
     /**
@@ -117,7 +118,15 @@ class implementationController extends Controller
         ->where('implementations.id_implementation', $id_implementation)
         ->select('implementations.*', 'sites.name AS name_site','leader.name AS name_leader','engineer.name AS name_engineer','commerces.name AS name_commerce','type_integrations.name AS name_typeintegration')
         ->get();
-        dd($implementation);  
+
+        
+        return view('implementation.update', compact('implementation'));    
+
+        /*$TC = DB::table('detail_implementations')
+        ->join('item')
+        ->where('detail_implementations.id_implementation', $id_implementation)*/
+
+
     }
 
     /**
