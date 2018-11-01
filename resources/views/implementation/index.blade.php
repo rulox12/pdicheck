@@ -41,13 +41,13 @@
                     <label for="name">Comercio</label>
                     <select type="text" class="form-control" name="commerce" required >
                       @foreach ($commerce as $item)
-                          <option value="{{ $item->id_commerce }}">{{ $item->name  }}</option>
+                          <option name ="id_commerce" value="{{ $item->id_commerce }}">{{ $item->name  }}</option>
                       @endforeach
                     </select>
                   </div>
                   <div class="form-group">
                     <label for="sitio">Sitio</label>
-                    <input type="text" class="form-control" name="sitio" placeholder="nombre">
+                    <input type="text" class="form-control" name="name_sitio" placeholder="nombre">
                   </div>
                   <div class="form-group">
                     <label for="ingeniero">Ingeniero</label>
@@ -68,7 +68,7 @@
                   </div>
                   <div class="form-group">
                     <label for="commerce">Metodo de compensación</label>
-                    <select type="text" class="form-control" name="commerce" required >
+                    <select type="text" class="form-control" name="compensation_id" required >
                       <option>Agregador</option>
                       <option>GetWay</option>
                     </select>
