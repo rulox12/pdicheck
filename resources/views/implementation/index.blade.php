@@ -22,7 +22,7 @@
         <tbody> 
         @foreach ($implementation as $item)
           <tr>
-            <td><a href="{{ route('implementation.show', $item->id_implementation }}">{{ $item->name_site }}</a></td>
+            <td><a href="{{ route('implementation.show', $item->id_implementation) }}">{{ $item->name_site }}</a></td>
             <td>{{ $item->name_leader }}</td>
             <td>{{ $item->name_engineer }}</td>
           </tr>

@@ -18,7 +18,7 @@
       <!-- Main content -->
       <section class="content">
         <div class="progress">
-          <div class="progress-bar" role="progressbar" style="width: 12%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">25%</div>
+          <div class="progress-bar" role="progressbar" style="width: {{ $implementation[0]->progress }}%" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100">{{ $implementation[0]->progress }}%</div>
         </div>
         <div class="row">
           <!-- left column -->
@@ -26,7 +26,8 @@
             <!-- general form elements -->
             <div class="box box-success">
               <div class="box-header with-border">
-                <h3 class="box-title">Nombre implementación</h3>
+                <label>{{ $implementation[0]->id_implementation }}</label>
+                <h3 class="box-title">{{ $implementation[0]->name_site  }}</h3>
               </div>
               @if ($errors->any())
                 <div class="alert alert-danger">
@@ -35,18 +36,18 @@
                         <li>{{ $error }}</li>
                       @endforeach
                   </ul>
-                </div><br />
+                </div><br/>
               @endif
               <form method="POST" action="" role="form">
                 <div class="box-body">
                   <div class="form-group">
                     @csrf
-                    <h4 class="" for="name">Comercio: xxxx</h4>
-                    <h4 for="exampleInputPassword1">Lider de Proyecto: xxx</h4>
-                    <h4 for="exampleInputPassword1">Ingeniero: xxx</h4>
-                    <h4 for="exampleInputPassword1">Fecha de Inicio: xxx</h4>
-                    <h4 for="exampleInputPassword1">Modelo de recaudo: xxx</h4>
-                    <h4 for="exampleInputPassword1">Tipo de Integración: xxx</h4>
+                    <h4 name="" for="name">Comercio: {{ $implementation[0]->name_commerce}}</h4>
+                    <h4 for="exampleInputPassword1">Lider de Proyecto: {{ $implementation[0]->name_leader}}</h4>
+                    <h4 for="exampleInputPassword1">Ingeniero: {{ $implementation[0]->name_engineer}}</h4>
+                    <h4 for="exampleInputPassword1">Fecha de Inicio: {{ $implementation[0]->start_date}}</h4>
+                    <h4 for="exampleInputPassword1">Modelo de recaudo: {{ $implementation[0]->compensation}}</h4>
+                    <h4 for="exampleInputPassword1">Tipo de Integración: {{ $implementation[0]->name_typeintegration}}</h4>
                   </div>
                   <div class="box box-success collapsed-box">
                     <div class="box-header with-border">
