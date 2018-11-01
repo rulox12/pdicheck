@@ -48,7 +48,7 @@ class implementationController extends Controller
         }
 
         $typeintegrations = DB::table('type_integrations')->get();
-        return view('create.index', compact('commerce','arrayDetalle','typeintegrations'));  
+        return view('implementation.create', compact('commerce','arrayDetalle','typeintegrations'));  
     }
 
     /**
