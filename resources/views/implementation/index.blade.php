@@ -47,7 +47,7 @@
                   </div>
                   <div class="form-group">
                     <label for="sitio">Sitio</label>
-                    <input type="text" class="form-control" name="name_sitie" placeholder="nombre" required>
+                    <input type="text" class="form-control" name="name_site" placeholder="nombre" required>
                   </div>
                   <div class="form-group">
                     <label for="id_enginer">Ingeniero</label>
