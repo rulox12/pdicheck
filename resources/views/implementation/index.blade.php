@@ -54,20 +54,20 @@
                     <select type="text" class="form-control" name="ingeniero" required >
 
                         @foreach ($arrayDetalle as $item)
-                          <option value="{{ $item->id }}">{{ $item->name  }}</option>
+                          <option name="id_enginer" value="{{ $item->id }}">{{ $item->name  }}</option>
                         @endforeach
                     </select>
                   </div>
                   <div class="form-group">
-                    <label for="tIntegración">Tipo de integración</label>
-                    <select type="text" class="form-control" name="tIntegración" required >
+                    <label for="id_type_integration">Tipo de integración</label>
+                    <select type="text" class="form-control" name="id_type_integration" required >
                       @foreach ($typeintegrations as $item)
                         <option value="{{ $item->id_type_integration }}">{{ $item->name  }}</option>
                       @endforeach
                     </select>
                   </div>
                   <div class="form-group">
-                    <label for="commerce">Metodo de compensación</label>
+                    <label for="compensation_id">Metodo de compensación</label>
                     <select type="text" class="form-control" name="compensation_id" required >
                       <option>Agregador</option>
                       <option>GetWay</option>
