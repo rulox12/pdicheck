@@ -61,7 +61,9 @@
                   <div class="form-group">
                     <label for="tIntegración">Tipo de integración</label>
                     <select type="text" class="form-control" name="tIntegración" required >
-                      
+                      @foreach ($typeintegrations as $item)
+                        <option value="{{ $item->id_type_integration }}">{{ $item->name  }}</option>
+                      @endforeach
                     </select>
                   </div>
                   <div class="form-group">
