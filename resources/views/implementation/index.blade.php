@@ -50,11 +50,11 @@
                     <input type="text" class="form-control" name="name_sitio" placeholder="nombre">
                   </div>
                   <div class="form-group">
-                    <label for="ingeniero">Ingeniero</label>
-                    <select type="text" class="form-control" name="ingeniero" required >
+                    <label for="id_enginer">Ingeniero</label>
+                    <select type="text" class="form-control" name="id_enginer" required >
 
                         @foreach ($arrayDetalle as $item)
-                          <option name="id_enginer" value="{{ $item->id }}">{{ $item->name  }}</option>
+                          <option value="{{ $item->id }}">{{ $item->name  }}</option>
                         @endforeach
                     </select>
                   </div>
