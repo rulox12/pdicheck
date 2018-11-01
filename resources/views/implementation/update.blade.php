@@ -18,7 +18,7 @@
       <!-- Main content -->
       <section class="content">
         <div class="progress">
-          <div class="progress-bar" role="progressbar" style="width: {{ $implementation[0]->progress }}%" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100">{{ $implementation[0]->progress }}%</div>
+          <div class="progress-bar" role="progressbar" style="width: {{ $implementation[0]->progress }}%; color: black" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"><b>{{ $implementation[0]->progress }}%</b></div>
         </div>
         <div class="row">
           <!-- left column -->
@@ -26,8 +26,8 @@
             <!-- general form elements -->
             <div class="box box-success">
               <div class="box-header with-border">
-                <label>{{ $implementation[0]->id_implementation }}</label>
-                <h3 class="box-title">{{ $implementation[0]->name_site  }}</h3>
+                <h3 class="box-title"><b>{{ $implementation[0]->name_site  }}</b></h3>
+                <input type="hidden" name="id_implementation" value="{{ $implementation[0]->id_implementation }}">
               </div>
               @if ($errors->any())
                 <div class="alert alert-danger">
@@ -42,13 +42,16 @@
                 <div class="box-body">
                   <div class="form-group">
                     @csrf
-                    <h4 name="" for="name">Comercio: {{ $implementation[0]->name_commerce}}</h4>
-                    <h4 for="exampleInputPassword1">Lider de Proyecto: {{ $implementation[0]->name_leader}}</h4>
-                    <h4 for="exampleInputPassword1">Ingeniero: {{ $implementation[0]->name_engineer}}</h4>
-                    <h4 for="exampleInputPassword1">Fecha de Inicio: {{ $implementation[0]->start_date}}</h4>
-                    <h4 for="exampleInputPassword1">Modelo de recaudo: {{ $implementation[0]->compensation}}</h4>
-                    <h4 for="exampleInputPassword1">Tipo de Integración: {{ $implementation[0]->name_typeintegration}}</h4>
+                    <h4 name="" for="name"><b>Comercio: </b>{{ $implementation[0]->name_commerce}}</h4>
+                    <h4 for="exampleInputPassword1"><b>Lider de Proyecto: </b>{{ $implementation[0]->name_leader}}</h4>
+                    <h4 for="exampleInputPassword1"><b>Ingeniero: </b>{{ $implementation[0]->name_engineer}}</h4>
+                    <h4 for="exampleInputPassword1"><b>Fecha de Inicio: </b>{{ $implementation[0]->start_date}}</h4>
+                    <h4 for="exampleInputPassword1"><b>Modelo de recaudo: </b>{{ $implementation[0]->compensation}}</h4>
+                    <h4 for="exampleInputPassword1"><b>Tipo de Integración: </b>{{ $implementation[0]->name_typeintegration}}</h4>
                   </div>
+                  @if(!empty($TC))
+                    
+                  @endif
                   <div class="box box-success collapsed-box">
                     <div class="box-header with-border">
                       <h3 class="box-title">Tarjetas de Credito</h3>

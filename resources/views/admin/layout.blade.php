@@ -155,17 +155,6 @@ desired effect
           </ul>
         </li>
         <li class="treeview">
-          <a href="#"><i class="fa fa-link"></i> <span>Sitios</span>
-            <span class="pull-right-container">
-                <i class="fa fa-angle-left pull-right"></i>
-              </span>
-          </a>
-          <ul class="treeview-menu">
-            <li><a href="#">Ver Sitios</a></li>
-            <li><a href="">Crear Sitios</a></li>
-          </ul>
-        </li>
-        <li class="treeview">
           <a href="#"><i class="fa fa-link"></i> <span>Implementation</span>
             <span class="pull-right-container">
                 <i class="fa fa-angle-left pull-right"></i>
