@@ -47,12 +47,11 @@
                   </div>
                   <div class="form-group">
                     <label for="sitio">Sitio</label>
-                    <input type="text" class="form-control" name="name_sitio" placeholder="nombre">
+                    <input type="text" class="form-control" name="name_sitio" placeholder="nombre" required>
                   </div>
                   <div class="form-group">
                     <label for="id_enginer">Ingeniero</label>
                     <select type="text" class="form-control" name="id_enginer" required >
-
                         @foreach ($arrayDetalle as $item)
                           <option value="{{ $item->id }}">{{ $item->name  }}</option>
                         @endforeach
@@ -96,6 +95,12 @@
                       <label>
                         <input name="EF" value="4" type="checkbox">
                         Efectivo
+                      </label>
+                    </div>
+                    <div class="checkbox">
+                      <label>
+                        <input name="EFP" value="5" type="checkbox">
+                        Efectivo Propio
                       </label>
                     </div>
                   </div>
