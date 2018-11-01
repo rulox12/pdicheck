@@ -16,23 +16,25 @@
           <tr>
             <th>Nombre</th>
             <th>Lider</th>
-            <th></th>
+            <th>Ingeniero</th>
           </tr>
         </thead>
-        <tbody>
+        <tbody> 
         @foreach ($implementation as $item)
           <tr>
-            <td>{{ $item->name  }}</td>
-            <td>{{ $item->nit  }}</td>
+            <td><a href="{{ route('implementation.show', $item->id_implementation }}">{{ $item->name_site }}</a></td>
+            <td>{{ $item->name_leader }}</td>
+            <td>{{ $item->name_engineer }}</td>
           </tr>
         @endforeach
         </tbody>
-        <tfoot>
+        <!--<tfoot>
           <tr>
-            <th>Nombre</th>
-            <th>Nit</th>
+            <th><a>Nombre</a></th>
+            <th>Lider</th>
+            <th>Ingeniero</th>
           </tr>
-        </tfoot>
+        </tfoot>-->
       </table>
     </div>
     <!-- /.box-body -->
