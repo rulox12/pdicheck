@@ -3,6 +3,8 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use DateTime;
+use Illuminate\Http\Request;
 
 class implementation extends Model
 {
@@ -22,10 +24,9 @@ class implementation extends Model
         $implementation = new implementation([
             'id_site'       =>$id_site,
             'id_type_integration'  =>$request->get('id_type_integration'),
-            'leader'        =>$request->get('id_leader'),
+            'leader'        =>4,
             'engineer'      =>$request->get('id_enginer'),
-            'start_date'    =>$request->get('start_date'),
-            'end_date'      =>$request->get('start_date'),
+            'start_date'    =>new DateTime(),
             'progress'      => 0,
             'compensation'  =>$request->get('compensation_id')
         ]);

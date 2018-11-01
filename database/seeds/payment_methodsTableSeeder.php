@@ -24,5 +24,8 @@ class payment_methodsTableSeeder extends Seeder
         $payment = new payment_method();
         $payment->name = 'Efectivo';
         $payment->save();
+        $payment = new payment_method();
+        $payment->name = 'Efectivo Propio';
+        $payment->save();
     }
 }

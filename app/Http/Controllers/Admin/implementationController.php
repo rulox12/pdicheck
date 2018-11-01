@@ -7,6 +7,10 @@ use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use App\site;
 use App\commerce;
+use App\item;
+use App\implementation;
+use App\detail_implementation;
+use App\payment_method_implementation;
 
 class implementationController extends Controller
 {
@@ -44,7 +48,7 @@ class implementationController extends Controller
         }
 
         $typeintegrations = DB::table('type_integrations')->get();
-        return view('implementation.index', compact('commerce','arrayDetalle','typeintegrations'));  
+        return view('create.index', compact('commerce','arrayDetalle','typeintegrations'));  
     }
 
     /**
@@ -55,27 +59,45 @@ class implementationController extends Controller
      */
     public function store(Request $request)
     {
-        
-        $site  = site::create($request->id_commerce,$request);
+        $site  = site::create($request->commerce,$request);
         $implementation = implementation::create($site->id,$request);
         if($request->TC != null){
+            $this->createDetails(1,$implementation->id);
             $paymentmethodimplementation = payment_method_implementation::create(
                 $implementation->id,1);
         }
         if($request->PSE !=  null){
+            $this->createDetails(2,$implementation->id);
             $paymentmethodimplementation = payment_method_implementation::create(
                 $implementation->id,2);
         }
         if($request->TU !=  null){
+            $this->createDetails(3,$implementation->id);
             $paymentmethodimplementation = payment_method_implementation::create(
                 $implementation->id,3);
         }
         if($request->EF !=  null){
+            $this->createDetails(4,$implementation->id);
             $paymentmethodimplementation = payment_method_implementation::create(
                 $implementation->id,4);
         }
-        
+        if($request->EFP !=  null){
+            $this->createDetails(5,$implementation->id);
+            $paymentmethodimplementation = payment_method_implementation::create(
+                $implementation->id,5);
+        }
+    }
 
+    /**
+     * crear el detalle de implementecion 
+     */
+    public function createDetails($id_payment,$id_implementation)
+    {
+        $items = DB::table('items')->where('id_payment_methods', $id_payment)->get();
+        foreach($items as $item)
+        {
+            $detail_implementation  = detail_implementation::create($id_implementation,$item->id_item);
+        }
     }
 
     /**

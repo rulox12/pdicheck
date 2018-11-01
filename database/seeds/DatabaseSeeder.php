@@ -18,5 +18,6 @@ class DatabaseSeeder extends Seeder
     $this->call(commerceTableSeeder::class);
     $this->call(payment_methodsTableSeeder::class);
     $this->call(typeintegrationTableSeeder::class);
+    $this->call(itemsTableSeeder::class);
     }
 }

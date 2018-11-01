@@ -15,7 +15,7 @@ class site extends Model
     
     public static function create(string $id,Request $request)
     {
-        $site = new sites([
+        $site = new site([
             'id_commerce'   =>$id,
             'name'  		=>$request->get('name_site')
         ]);
