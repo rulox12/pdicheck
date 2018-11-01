@@ -76,25 +76,25 @@
                   <div class="form-group">
                     <div class="checkbox">
                       <label>
-                        <input name="MP" value="1" type="checkbox">
+                        <input name="TC" value="1" type="checkbox">
                         Tarjetas de Credito
                       </label>
                     </div>
                     <div class="checkbox">
                       <label>
-                        <input name="MP" value="2" type="checkbox">
+                        <input name="PSE" value="2" type="checkbox">
                         PSE
                       </label>
                     </div>
                     <div class="checkbox">
                       <label>
-                        <input name="MP" value="3" type="checkbox">
+                        <input name="TU" value="3" type="checkbox">
                         TUYA
                       </label>
                     </div>
                     <div class="checkbox">
                       <label>
-                        <input name="MP" value="4" type="checkbox">
+                        <input name="EF" value="4" type="checkbox">
                         Efectivo
                       </label>
                     </div>
