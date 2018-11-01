@@ -21,15 +21,15 @@ class implementationController extends Controller
      */
     public function index()
     {
-        $commerce = commerce::All();
-        return view('implementation.index', compact('commerce'));     
+        $implementation = DB::table('implementations')
+            ->join('sites', 'implementations.id_site', '=', 'sites.id_site')
+            ->join('users as leader', 'leader.id','=','implementations.leader')
+            ->join('users as engineer', 'engineer.id','=','implementations.engineer')
+            ->select('implementations.*', 'sites.name AS name_site','leader.name AS name_leader','engineer.name AS name_engineer')
+            ->get();
+        return view('implementation.index', compact('implementation'));     
     }
 
-    public function indexv()
-    {
-        $commerce = commerce::All();
-        return view('implementation.index', compact('commerce'));    
-    }
     /**
      * Show the form for creating a new resource.
      *
@@ -106,9 +106,17 @@ class implementationController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
-    {
-        //
+    public function show($id_implementation)
+    {   
+        $implementation = DB::table('implementations')
+        ->join('sites', 'implementations.id_site', '=', 'sites.id_site')
+        ->join('commerces', 'commerces.id_commerce', '=','sites.id_commerce')
+        ->join('users as leader', 'leader.id','=','implementations.leader')
+        ->join('users as engineer', 'engineer.id','=','implementations.engineer')
+        ->where('implementations.id_implementation', $id_implementation)
+        ->select('implementations.*', 'sites.name AS name_site','leader.name AS name_leader','engineer.name AS name_engineer')
+        ->get();      
+        dd($implementation);  
     }
 
     /**
