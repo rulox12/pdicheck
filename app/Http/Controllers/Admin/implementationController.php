@@ -152,7 +152,6 @@ class implementationController extends Controller
         ->select('detail_implementations.*','item.description')
         ->get();
 
-        dd($TC,$PSE,$TY,$EF,$EFP);
         
         return view('implementation.update', compact('implementation','TC','PSE','TY','EF','EFP'));    
     }
