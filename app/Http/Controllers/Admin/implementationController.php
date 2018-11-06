@@ -176,6 +176,7 @@ class implementationController extends Controller
      */
     public function update(Request $request, $id)
     {
+        dd($request,$id);
         try{
             $detail_implementation = DB::table('detail_implementations')
             ->where('item.id_payment_methods',$id)
