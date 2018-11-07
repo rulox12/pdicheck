@@ -27,3 +27,5 @@ Route::resource('commerces', 'Admin\commerceController');
 Route::resource('integrationtype', 'Admin\typeIntegrationController');
 
 Route::resource('implementation', 'admin\implementationController');
+
+Route::resource('pdf', 'admin\pdfController');

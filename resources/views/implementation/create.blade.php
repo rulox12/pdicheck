@@ -1,9 +1,5 @@
 @extends('admin.layout')
 
-@section('link')
-
-@endsection
-
 @section('content')
 
 <div class="content-fluid">

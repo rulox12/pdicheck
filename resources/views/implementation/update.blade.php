@@ -26,8 +26,8 @@
             <!-- general form elements -->
             <div class="box box-success">
               <div class="box-header with-border">
-                <h3 class="box-title"><b>{{ $implementation[0]->name_site  }}</b></h3>
-                <input type="hidden" name="id_implementation" value="{{ $implementation[0]->id_implementation }}">
+                <h3 class="box-title"><b>{{ $implementation[0]->name_site}}</b></h3>
+                
               </div>
               @if ($errors->any())
                 <div class="alert alert-danger">
@@ -38,7 +38,9 @@
                   </ul>
                 </div><br/>
               @endif
-              <form method="POST" action="" role="form">
+              <form method="POST" action="{!! route('implementation.update', $implementation[0]->id_implementation) !!}" role="form">
+                {!! csrf_field() !!}
+                {!! method_field('PUT') !!}
                 <div class="box-body">
                   <div class="form-group">
                     @csrf
@@ -49,194 +51,141 @@
                     <h4 for="exampleInputPassword1"><b>Modelo de recaudo: </b>{{ $implementation[0]->compensation}}</h4>
                     <h4 for="exampleInputPassword1"><b>Tipo de Integración: </b>{{ $implementation[0]->name_typeintegration}}</h4>
                   </div>
-                  @if(!empty($TC))
-                    
+                  @if(!empty($TC[0]))
+                    <div class="box box-success collapsed-box">
+                      <div class="box-header with-border">
+                        <h3 class="box-title">Tarjetas de Credito</h3>
+                        <div class="box-tools pull-right">
+                          <button type="button" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse">
+                            <i class="fa fa-plus"></i>
+                          </button>
+                        </div>
+                      </div>
+                    @foreach ($TC as $item)
+                      <div class="box-body" style="display: none;">
+                        <div class="form-group">                     
+                          <div class="row">
+                            <div class="col-md-5 checkbox">
+                              <label><input type="checkbox" name="TC[]" value="{{ $item->id_detail_implementations }}">{{ $item->description }}</label>
+                            </div>
+                            <div class="col-md-6">
+                              <textarea class="col-md-12" name="TCD[]" value="{{ $item->observation }}"></textarea>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    @endforeach
+                    </div>
                   @endif
-                  <div class="box box-success collapsed-box">
-                    <div class="box-header with-border">
-                      <h3 class="box-title">Tarjetas de Credito</h3>
-                      <div class="box-tools pull-right">
-                        <button type="button" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse">
-                          <i class="fa fa-plus"></i>
-                        </button>
+                  @if(!empty($PSE[0]))
+                    <div class="box box-success collapsed-box">
+                      <div class="box-header with-border">
+                        <h3 class="box-title">PSE</h3>
+                        <div class="box-tools pull-right">
+                          <button type="button" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse">
+                            <i class="fa fa-plus"></i>
+                          </button>
+                        </div>
                       </div>
+                    @foreach ($PSE as $item)
+                      <div class="box-body" style="display: none;">
+                        <div class="form-group">                     
+                          <div class="row">
+                            <div class="col-md-5 checkbox">
+                              <label><input type="checkbox" name="PSE[]" value="{{ $item->id_item }}">{{ $item->description }}</label>
+                            </div>
+                            <div class="col-md-6">
+                              <textarea class="col-md-12" name="PSED[]" value="{{ $item->observation }}"></textarea>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    @endforeach
                     </div>
-                    <div class="box-body" style="display: none;">
-                      <div class="form-group">                     
-                        <div class="row">
-                          <div class="col-md-5 checkbox">
-                            <label><input type="checkbox" value="">Solicitud Cartas de terminales</label>
-                          </div>
-                          <div class="col-md-6">
-                            <textarea class="col-md-12"></textarea>
+                  @endif
+                  @if(!empty($TY[0]))
+                    <div class="box box-success collapsed-box">
+                      <div class="box-header with-border">
+                        <h3 class="box-title">TUYA</h3>
+                        <div class="box-tools pull-right">
+                          <button type="button" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse">
+                            <i class="fa fa-plus"></i>
+                          </button>
+                        </div>
+                      </div>
+                    @foreach ($TY as $item)
+                      <div class="box-body" style="display: none;">
+                        <div class="form-group">                     
+                          <div class="row">
+                            <div class="col-md-5 checkbox">
+                              <label><input type="checkbox" name="TY[]" value="{{ $item->id_item }}">{{ $item->description }}</label>
+                            </div>
+                            <div class="col-md-6">
+                              <textarea class="col-md-12" name="TYD[]" value="{{ $item->observation }}"></textarea>
+                            </div>
                           </div>
                         </div>
                       </div>
-                      <div class="form-group">                     
-                        <div class="row">
-                          <div class="col-md-5 checkbox">
-                            <label><input type="checkbox" value="">Solicitud terminales</label>
-                          </div>
-                          <div class="col-md-6">
-                            <textarea class="col-md-12"></textarea>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="form-group">                     
-                        <div class="row">
-                          <div class="col-md-5 checkbox">
-                            <label><input type="checkbox" value="">Cargue terminales</label>
-                          </div>
-                          <div class="col-md-6">
-                            <textarea class="col-md-12"></textarea>
-                          </div>
-                        </div>
-                      </div>                      
-                      <div class="form-group">                     
-                        <div class="row">
-                          <div class="col-md-5 checkbox">
-                            <label><input type="checkbox" value="">Pruebas terminales</label>
-                          </div>
-                          <div class="col-md-6">
-                            <textarea class="col-md-12"></textarea>
-                          </div>
-                        </div>
-                      </div>
-                      <!-- /.box-body -->
+                    @endforeach
                     </div>
-                  </div>
-                  <div class="box box-success collapsed-box">
-                    <div class="box-header with-border">
-                      <h3 class="box-title">PSE</h3>
-                      <div class="box-tools pull-right">
-                        <button type="button" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse">
-                          <i class="fa fa-plus"></i>
-                        </button>
+                  @endif
+                  @if(!empty($EF[0]))
+                    <div class="box box-success collapsed-box">
+                      <div class="box-header with-border">
+                        <h3 class="box-title">Efectivo</h3>
+                        <div class="box-tools pull-right">
+                          <button type="button" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse">
+                            <i class="fa fa-plus"></i>
+                          </button>
+                        </div>
                       </div>
+                      @foreach ($EF as $item)
+                        <div class="box-body" style="display: none;">
+                          <div class="form-group">                     
+                            <div class="row">
+                              <div class="col-md-5 checkbox">
+                                <label><input type="checkbox" name="EF[]" value="{{ $item->id_item }}">{{ $item->description }}</label>
+                              </div>
+                              <div class="col-md-6">
+                                <textarea class="col-md-12" name="EFD[]" value="{{ $item->observation }}"></textarea>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      @endforeach
                     </div>
-                    <div class="box-body" style="display: none;">
-                      <div class="form-group">                     
-                        <div class ="row">
-                          <div class="col-md-5 checkbox">
-                            <label><input type="checkbox" value="">Afiliación del comercio ante ACH</label>
-                          </div>
-                          <div class="col-md-6">
-                            <textarea class="col-md-12"></textarea>
-                          </div>
+                  @endif
+                  @if(!empty($EFP[0]))
+                    <div class="box box-success collapsed-box">
+                      <div class="box-header with-border">
+                        <h3 class="box-title">Efectivo Propio</h3>
+                        <div class="box-tools pull-right">
+                          <button type="button" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse">
+                            <i class="fa fa-plus"></i>
+                          </button>
                         </div>
                       </div>
-                      <div class="form-group">                     
-                        <div class ="row">
-                          <div class="col-md-5 checkbox">
-                            <label><input type="checkbox" value="">Configuración de códigos de prueba PSE</label>
-                          </div>
-                          <div class="col-md-6">
-                            <textarea class="col-md-12"></textarea>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="form-group">                     
-                        <div class ="row">
-                          <div class="col-md-5 checkbox">
-                            <label><input type="checkbox" value="">Crear código de servicio y cuenta recaudadora</label>
-                          </div>
-                          <div class="col-md-6">
-                            <textarea class="col-md-12"></textarea>
+                      @foreach ($EFP as $item)
+                        <div class="box-body" style="display: none;">
+                          <div class="form-group">                     
+                            <div class="row">
+                              <div class="col-md-5 checkbox">
+                                <label><input type="checkbox" name="EFP[]" value="{{ $item->id_item }}">{{ $item->description }}</label>
+                              </div>
+                              <div class="col-md-6">
+                                <textarea class="col-md-12" name="EFPD[]" value="{{ $item->observation }}"></textarea>
+                              </div>
+                            </div>
                           </div>
                         </div>
-                      </div>
-                      <div class="form-group">                     
-                        <div class ="row">
-                          <div class="col-md-5 checkbox">
-                            <label><input type="checkbox" value="">Asociar cuenta y código de servicio</label>
-                          </div>
-                          <div class="col-md-6">
-                            <textarea class="col-md-12"></textarea>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="form-group">                     
-                        <div class ="row">
-                          <div class="col-md-5 checkbox">
-                            <label><input type="checkbox" value="">Configurar datos reales de PSE en la consola</label>
-                          </div>
-                          <div class="col-md-6">
-                            <textarea class="col-md-12"></textarea>
-                          </div>
-                        </div>
-                      </div>
-                      <!-- /.box-body -->
+                      @endforeach
                     </div>
-                  </div>
-                  <div class="box box-success collapsed-box">
-                    <div class="box-header with-border">
-                      <h3 class="box-title">TUYA</h3>
-                      <div class="box-tools pull-right">
-                        <button type="button" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse">
-                          <i class="fa fa-plus"></i>
-                        </button>
-                      </div>
-                    </div>
-                    <div class="box-body" style="display: none;">
-                      <div class="form-group">                     
-                        <div class ="row">
-                          <div class="col-md-5 checkbox">
-                            <label><input type="checkbox" value="">Afiliación del comercio ante ACH</label>
-                          </div>
-                          <div class="col-md-6">
-                            <textarea class="col-md-12"></textarea>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="form-group">                     
-                        <div class ="row">
-                          <div class="col-md-5 checkbox">
-                            <label><input type="checkbox" value="">Configuración de códigos de prueba PSE</label>
-                          </div>
-                          <div class="col-md-6">
-                            <textarea class="col-md-12"></textarea>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="form-group">                     
-                        <div class ="row">
-                          <div class="col-md-5 checkbox">
-                            <label><input type="checkbox" value="">Crear código de servicio y cuenta recaudadora</label>
-                          </div>
-                          <div class="col-md-6">
-                            <textarea class="col-md-12"></textarea>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="form-group">                     
-                        <div class ="row">
-                          <div class="col-md-5 checkbox">
-                            <label><input type="checkbox" value="">Asociar cuenta y código de servicio</label>
-                          </div>
-                          <div class="col-md-6">
-                            <textarea class="col-md-12"></textarea>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="form-group">                     
-                        <div class ="row">
-                          <div class="col-md-5 checkbox">
-                            <label><input type="checkbox" value="">Configurar datos reales de PSE en la consola</label>
-                          </div>
-                          <div class="col-md-6">
-                            <textarea class="col-md-12"></textarea>
-                          </div>
-                        </div>
-                      </div>
-                      <!-- /.box-body -->
-                    </div>
-                  </div>
+                  @endif
                 </div>
-
                 <div class="box-footer">
-                  <button type="submit" class="btn btn-primary">Crear Comercio</button>
+                  <button type="submit" class="btn btn-primary">Guardar</button>
                 </div>
-
+                
               </form>
 
             </div>
