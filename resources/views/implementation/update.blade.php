@@ -13,8 +13,8 @@
     @endsection
     <!-- Main content -->
     <section class="content">
-      <div class="progress">
-        <div class="progress-bar progress-bar-green" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: {{ $implementation[0]->progress }}%; color: black">
+      <div class="row progress active">
+        <div class="progress-bar progress-bar-success progress-bar-striped" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: {{ $implementation[0]->progress }}%; color: black">
           <b>{{ $implementation[0]->progress }}%</b>
           <span class="sr-only">40% Complete (success)</span>
         </div>
