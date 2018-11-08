@@ -14,7 +14,10 @@
       <!-- Main content -->
       <section class="content">
         <div class="progress">
-          <div class="progress-bar" role="progressbar" style="width: {{ $implementation[0]->progress }}%; color: black" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"><b>{{ $implementation[0]->progress }}%</b></div>
+          <div class="progress-bar progress-bar-green" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%; color: black">
+            <b>{{ $implementation[0]->progress }}%</b>
+            <span class="sr-only">40% Complete (success)</span>
+          </div>
         </div>
         <div class="row">
           <!-- left column -->
@@ -52,137 +55,216 @@
                     <h4 for="exampleInputPassword1"><b>Tipo de Integración: </b>{{ $implementation[0]->name_typeintegration}}</h4>
                   </div>
                   @if(!empty($TC[0]))
-                    <div class="box box-success collapsed-box">
+                    <div class="panel box box-success">
                       <div class="box-header with-border">
-                        <h3 class="box-title">Tarjetas de Credito</h3>
-                        <div class="box-tools pull-right">
-                          <button type="button" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse">
-                            <i class="fa fa-plus"></i>
-                          </button>
-                        </div>
+                        <h4 class="box-title">
+                          <a data-toggle="collapse" data-parent="#accordion" href="#collapseTC" class="collapsed" aria-expanded="false">
+                            Tarjetas de Credito
+                          </a>
+                        </h4>
                       </div>
-                    @foreach ($TC as $item)
-                      <div class="box-body" style="display: none;">
-                        <div class="form-group">                     
-                          <div class="row">
-                            <div class="col-md-5 checkbox">
-                              <label><input class="TC" type="checkbox" name="TC[]" value="{{ $item->id_detail_implementations }}">{{ $item->description }}</label>
+                      <div id="collapseTC" class="panel-collapse collapse" aria-expanded="false">
+                        @foreach ($TC as $item)
+                          @if($item->status == 1 )
+                            <div class="box-body">
+                                <div class="form-group">                     
+                                <div class="row alert alert-success alert-dismissible" role="alert">
+                                  <div class="col-md-5 checkbox">
+                                    <label><input class="TC" type="checkbox" name="TC[]" value="{{ $item->id_detail_implementations }}" checked disabled>{{ $item->description }}</label>
+                                  </div>
+                                  <div class="col-md-6">
+                                    <textarea style="color: black;" class="TCD col-md-12" name="TCD[{{ $item->id_detail_implementations }}]">{{ $item->observation }}</textarea>
+                                  </div>
+                                </div>
+                              </div>
                             </div>
-                            <div class="col-md-6">
-                              <textarea class="TCD" class="col-md-12" name="TCD[{{ $item->id_detail_implementations }}]" value="{{ $item->observation }}"></textarea>
+                          @else
+                            <div class="box-body">
+                              <div class="form-group">                     
+                                <div class="row" role="alert">
+                                  <div class="col-md-5 checkbox">
+                                    <label><input class="TC" type="checkbox" name="TC[]" value="{{ $item->id_detail_implementations }}">{{ $item->description }}</label>
+                                  </div>
+                                  <div class="col-md-6">
+                                    <textarea style="color: black;" class="TCD col-md-12" name="TCD[{{ $item->id_detail_implementations }}]">{{ $item->observation }}</textarea>
+                                  </div>
+                                </div>
+                              </div>
                             </div>
-                          </div>
-                        </div>
+                          @endif
+                        @endforeach
                       </div>
-                    @endforeach
                     </div>
                   @endif
                   @if(!empty($PSE[0]))
-                    <div class="box box-success collapsed-box">
+                    <div class="panel box box-success">
                       <div class="box-header with-border">
-                        <h3 class="box-title">PSE</h3>
-                        <div class="box-tools pull-right">
-                          <button type="button" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse">
-                            <i class="fa fa-plus"></i>
-                          </button>
-                        </div>
+                        <h4 class="box-title">
+                          <a data-toggle="collapse" data-parent="#accordion" href="#collapsePSE" class="collapsed" aria-expanded="false">
+                            PSE
+                          </a>
+                        </h4>
                       </div>
-                    @foreach ($PSE as $item)
-                      <div class="box-body" style="display: none;">
-                        <div class="form-group">                     
-                          <div class="row">
-                            <div class="col-md-5 checkbox">
-                              <label><input type="checkbox" name="PSE[]" value="{{ $item->id_item }}">{{ $item->description }}</label>
+                      <div id="collapsePSE" class="panel-collapse collapse" aria-expanded="false">
+                        @foreach ($PSE as $item)
+                          @if($item->status == 1 )
+                            <div class="box-body">
+                                <div class="form-group">                     
+                                <div class="row alert alert-success alert-dismissible" role="alert">
+                                  <div class="col-md-5 checkbox">
+                                    <label><input type="checkbox" name="PSE[]" value="{{ $item->id_detail_implementations }}" checked disabled>{{ $item->description }}</label>
+                                  </div>
+                                  <div class="col-md-6">
+                                    <textarea style="color: black;" class="PSED col-md-12" name="PSED[{{ $item->id_detail_implementations }}]">{{ $item->observation }}</textarea>
+                                  </div>
+                                </div>
+                              </div>
                             </div>
-                            <div class="col-md-6">
-                              <textarea class="col-md-12" name="PSED[{{ $item->id_detail_implementations }}]" value="{{ $item->observation }}"></textarea>
+                          @else
+                            <div class="box-body">
+                              <div class="form-group">                     
+                                <div class="row" role="alert">
+                                  <div class="col-md-5 checkbox">
+                                    <label><input type="checkbox" name="PSE[]" value="{{ $item->id_detail_implementations }}">{{ $item->description }}</label>
+                                  </div>
+                                  <div class="col-md-6">
+                                    <textarea style="color: black;" class="PSED col-md-12" name="PSED[{{ $item->id_detail_implementations }}]">{{ $item->observation }}</textarea>
+                                  </div>
+                                </div>
+                              </div>
                             </div>
-                          </div>
-                        </div>
+                          @endif
+                        @endforeach
                       </div>
-                    @endforeach
                     </div>
                   @endif
                   @if(!empty($TY[0]))
-                    <div class="box box-success collapsed-box">
+                    <div class="panel box box-success">
                       <div class="box-header with-border">
-                        <h3 class="box-title">TUYA</h3>
-                        <div class="box-tools pull-right">
-                          <button type="button" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse">
-                            <i class="fa fa-plus"></i>
-                          </button>
-                        </div>
+                        <h4 class="box-title">
+                          <a data-toggle="collapse" data-parent="#accordion" href="#collapseTY" class="collapsed" aria-expanded="false">
+                            TY
+                          </a>
+                        </h4>
                       </div>
-                    @foreach ($TY as $item)
-                      <div class="box-body" style="display: none;">
-                        <div class="form-group">                     
-                          <div class="row">
-                            <div class="col-md-5 checkbox">
-                              <label><input type="checkbox" name="TY[]" value="{{ $item->id_item }}">{{ $item->description }}</label>
+                      <div id="collapseTY" class="panel-collapse collapse" aria-expanded="false">
+                        @foreach ($TY as $item)
+                          @if($item->status == 1 )
+                            <div class="box-body">
+                                <div class="form-group">                     
+                                <div class="row alert alert-success alert-dismissible" role="alert">
+                                  <div class="col-md-5 checkbox">
+                                    <label><input type="checkbox" name="TY[]" value="{{ $item->id_detail_implementations }}" checked disabled>{{ $item->description }}</label>
+                                  </div>
+                                  <div class="col-md-6">
+                                    <textarea style="color: black;" class="TYD col-md-12" name="TYD[{{ $item->id_detail_implementations }}]">{{ $item->observation }}</textarea>
+                                  </div>
+                                </div>
+                              </div>
                             </div>
-                            <div class="col-md-6">
-                              <textarea class="col-md-12" name="TYD[{{ $item->id_detail_implementations }}]" value="{{ $item->observation }}"></textarea>
+                          @else
+                            <div class="box-body">
+                              <div class="form-group">                     
+                                <div class="row" role="alert">
+                                  <div class="col-md-5 checkbox">
+                                    <label><input type="checkbox" name="TY[]" value="{{ $item->id_detail_implementations }}">{{ $item->description }}</label>
+                                  </div>
+                                  <div class="col-md-6">
+                                    <textarea style="color: black;" class="TYD col-md-12" name="TYD[{{ $item->id_detail_implementations }}]">{{ $item->observation }}</textarea>
+                                  </div>
+                                </div>
+                              </div>
                             </div>
-                          </div>
-                        </div>
+                          @endif
+                        @endforeach
                       </div>
-                    @endforeach
                     </div>
                   @endif
                   @if(!empty($EF[0]))
-                    <div class="box box-success collapsed-box">
+                    <div class="panel box box-success">
                       <div class="box-header with-border">
-                        <h3 class="box-title">Efectivo</h3>
-                        <div class="box-tools pull-right">
-                          <button type="button" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse">
-                            <i class="fa fa-plus"></i>
-                          </button>
-                        </div>
+                        <h4 class="box-title">
+                          <a data-toggle="collapse" data-parent="#accordion" href="#collapseEF" class="collapsed" aria-expanded="false">
+                            EF
+                          </a>
+                        </h4>
                       </div>
-                      @foreach ($EF as $item)
-                        <div class="box-body" style="display: none;">
-                          <div class="form-group">                     
-                            <div class="row">
-                              <div class="col-md-5 checkbox">
-                                <label><input type="checkbox" name="EF[]" value="{{ $item->id_item }}">{{ $item->description }}</label>
-                              </div>
-                              <div class="col-md-6">
-                                <textarea class="col-md-12" name="EFD[{{ $item->id_detail_implementations }}]" value="{{ $item->observation }}"></textarea>
+                      <div id="collapseEF" class="panel-collapse collapse" aria-expanded="false">
+                        @foreach ($EF as $item)
+                          @if($item->status == 1 )
+                            <div class="box-body">
+                                <div class="form-group">                     
+                                <div class="row alert alert-success alert-dismissible" role="alert">
+                                  <div class="col-md-5 checkbox">
+                                    <label><input type="checkbox" name="EF[]" value="{{ $item->id_detail_implementations }}" checked disabled>{{ $item->description }}</label>
+                                  </div>
+                                  <div class="col-md-6">
+                                    <textarea style="color: black;" class="EFD col-md-12" name="EFD[{{ $item->id_detail_implementations }}]">{{ $item->observation }}</textarea>
+                                  </div>
+                                </div>
                               </div>
                             </div>
-                          </div>
-                        </div>
-                      @endforeach
+                          @else
+                            <div class="box-body">
+                              <div class="form-group">                     
+                                <div class="row" role="alert">
+                                  <div class="col-md-5 checkbox">
+                                    <label><input type="checkbox" name="EF[]" value="{{ $item->id_detail_implementations }}">{{ $item->description }}</label>
+                                  </div>
+                                  <div class="col-md-6">
+                                    <textarea style="color: black;" class="EFD col-md-12" name="EFD[{{ $item->id_detail_implementations }}]">{{ $item->observation }}</textarea>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          @endif
+                        @endforeach
+                      </div>
                     </div>
                   @endif
                   @if(!empty($EFP[0]))
-                    <div class="box box-success collapsed-box">
+                    <div class="panel box box-success">
                       <div class="box-header with-border">
-                        <h3 class="box-title">Efectivo Propio</h3>
-                        <div class="box-tools pull-right">
-                          <button type="button" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse">
-                            <i class="fa fa-plus"></i>
-                          </button>
-                        </div>
+                        <h4 class="box-title">
+                          <a data-toggle="collapse" data-parent="#accordion" href="#collapseEFP" class="collapsed" aria-expanded="false">
+                            EFP
+                          </a>
+                        </h4>
                       </div>
-                      @foreach ($EFP as $item)
-                        <div class="box-body" style="display: none;">
-                          <div class="form-group">                     
-                            <div class="row">
-                              <div class="col-md-5 checkbox">
-                                <label><input type="checkbox" name="EFP[]" value="{{ $item->id_item }}">{{ $item->description }}</label>
-                              </div>
-                              <div class="col-md-6">
-                                <textarea class="col-md-12" name="EFPD[{{ $item->id_detail_implementations }}]" value="{{ $item->observation }}"></textarea>
+                      <div id="collapseEFP" class="panel-collapse collapse" aria-expanded="false">
+                        @foreach ($EFP as $item)
+                          @if($item->status == 1 )
+                            <div class="box-body">
+                                <div class="form-group">                     
+                                <div class="row alert alert-success alert-dismissible" role="alert">
+                                  <div class="col-md-5 checkbox">
+                                    <label><input type="checkbox" name="EFP[]" value="{{ $item->id_detail_implementations }}" checked disabled>{{ $item->description }}</label>
+                                  </div>
+                                  <div class="col-md-6">
+                                    <textarea style="color: black;" class="EFPD col-md-12" name="EFPD[{{ $item->id_detail_implementations }}]">{{ $item->observation }}</textarea>
+                                  </div>
+                                </div>
                               </div>
                             </div>
-                          </div>
-                        </div>
-                      @endforeach
+                          @else
+                            <div class="box-body">
+                              <div class="form-group">                     
+                                <div class="row" role="alert">
+                                  <div class="col-md-5 checkbox">
+                                    <label><input type="checkbox" name="EFP[]" value="{{ $item->id_detail_implementations }}">{{ $item->description }}</label>
+                                  </div>
+                                  <div class="col-md-6">
+                                    <textarea style="color: black;" class="EFPD col-md-12" name="EFPD[{{ $item->id_detail_implementations }}]">{{ $item->observation }}</textarea>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          @endif
+                        @endforeach
+                      </div>
                     </div>
                   @endif
                 </div>
-                <textarea class="col-md-12" name="prueba" id="prueba"></textarea>
                 <div class="box-footer">
                   <button id="Guardar" type="submit" class="btn btn-primary">Guardar</button>
                 </div>
@@ -200,18 +282,13 @@
 @endsection
 @section('script')
   <script type="text/javascript">
-    $('#myCollapsible').collapse({
-      toggle: false
-    })
-    $('.collapse').collapse();
    
-    
-
-    $('#Guardar').click(function(){
-      if(!$('input[type=checkbox]').prop('checked')){
-        $('this').val('hola');
-      }
-        
+    $('.TC').click(function(){
+        if (this.checked){
+          $('.TCD').prop('disabled', false);
+        }else {
+          $('.TCD').prop('disabled', true);    
+        }
     });
      
     
