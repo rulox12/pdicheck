@@ -58,7 +58,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
               <!-- hidden-xs hides the username on small devices so only the image appears. -->
               <span class="hidden-xs">
                 @auth
-                  {{ auth()->user()-name}}
+                  {{ auth()->user()->name}}
                 @else
                   no esta logueado
                 @endauth
@@ -99,7 +99,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <div class="pull-left info">
           <p>
             @auth
-              {{ auth()->user()-name}}
+              {{ auth()->user()->name}}
             @else
               no esta logueado
             @endauth
