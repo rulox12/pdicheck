@@ -195,6 +195,7 @@ class implementationController extends Controller
             ->get();
             $countitemsI=count($dimplementations);
             $countitemsICheck=count($dimplementationscheck);    
+        
             $detail_implementation = implementation::where('id_implementation',$id)
                 ->update(["progress" =>$countitemsICheck*100/$countitemsI ]);
             
