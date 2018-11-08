@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+Use Illuminate\Database\Query\Builder;
 use App\Http\Controllers\Controller;
 use App\site;
 use App\commerce;
@@ -151,8 +152,6 @@ class implementationController extends Controller
         ->where('item.id_payment_methods',5)
         ->select('detail_implementations.*','item.description')
         ->get();
-
-        
         return view('implementation.update', compact('implementation','TC','PSE','TY','EF','EFP'));    
     }
 
@@ -176,24 +175,34 @@ class implementationController extends Controller
      */
     public function update(Request $request, $id)
     {
-        dd($request,$id);
+
         try{
-            $detail_implementation = DB::table('detail_implementations')
-            ->where('item.id_payment_methods',$id)
-            ->firts();
-            if($request->status=="1"){
-                $detail_implementation->status=$request->status;
-                $detail_implementation->observation = $request->observation;
-                $detail_implementation->save();
+            if($request->TC){
+                $this->changeState($request->TC,$request->TCD);
+            }
+            if($request->PSE){
+                $this->changeState($request->PSE,$request->PSE);
+            }
+            if($request->EF){
+                $this->changeState($request->EF,$request->EF);
+            }
+            if($request->EFP){
+                $this->changeState($request->EFP,$request->EFPD);
             }
         }catch (\Exception $e) {
             return $e->getMessage();
         }
-      
-        
-
     }
 
+    public function changeState($arrayitem,$arraydescription)
+    {
+        if($arrayitem && $arraydescription){
+            foreach($arrayitem as $item){
+                $detail_implementation = detail_implementation::where('id_detail_implementations',$item)
+                ->update(["status" => "1","observation"=>$arraydescription[$item]]);
+            }
+        }
+    }
     /**
      * Remove the specified resource from storage.
      *
