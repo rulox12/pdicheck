@@ -119,9 +119,6 @@ class implementationController extends Controller
         ->where('implementations.id_implementation', $id_implementation)
         ->select('implementations.*', 'sites.name AS name_site','leader.name AS name_leader','engineer.name AS name_engineer','commerces.name AS name_commerce','type_integrations.name AS name_typeintegration')
         ->get();
-
-           
-
         $TC = DB::table('detail_implementations')
         ->join('items as item', 'item.id_item', '=', 'detail_implementations.id_item')
         ->where('detail_implementations.id_implementation', $id_implementation)
@@ -176,22 +173,31 @@ class implementationController extends Controller
     public function update(Request $request, $id)
     {
 
-        try{
             if($request->TC){
                 $this->changeState($request->TC,$request->TCD);
             }
             if($request->PSE){
-                $this->changeState($request->PSE,$request->PSE);
+                $this->changeState($request->PSE,$request->PSED);
+            }
+            if($request->TY){
+                $this->changeState($request->TY,$request->TYD);
             }
             if($request->EF){
-                $this->changeState($request->EF,$request->EF);
+                $this->changeState($request->EF,$request->EFD);
             }
             if($request->EFP){
                 $this->changeState($request->EFP,$request->EFPD);
             }
-        }catch (\Exception $e) {
-            return $e->getMessage();
-        }
+            $dimplementations = DB::table('detail_implementations')->where('id_implementation',$id)
+            ->get();
+            $dimplementationscheck = DB::table('detail_implementations')->where('id_implementation',$id)
+            ->where('status','1')
+            ->get();
+            $countitemsI=count($dimplementations);
+            $countitemsICheck=count($dimplementationscheck);    
+            $detail_implementation = implementation::where('id_implementation',$id)
+                ->update(["progress" =>$countitemsICheck*100/$countitemsI ]);
+            
     }
 
     public function changeState($arrayitem,$arraydescription)
@@ -202,6 +208,8 @@ class implementationController extends Controller
                 ->update(["status" => "1","observation"=>$arraydescription[$item]]);
             }
         }
+        return;
+
     }
     /**
      * Remove the specified resource from storage.
