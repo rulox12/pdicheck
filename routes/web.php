@@ -29,3 +29,9 @@ Route::resource('integrationtype', 'Admin\typeIntegrationController');
 Route::resource('implementation', 'admin\implementationController');
 
 Route::resource('pdf', 'admin\pdfController');
+
+Route::get('/pdft', function(){
+    $pdf = resolve('dompdf.wrapper');
+    $pdf->loadHTML('<h1>Test</h1>');
+    return $pdf->stream();
+});

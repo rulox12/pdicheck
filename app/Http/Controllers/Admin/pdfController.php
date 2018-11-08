@@ -3,7 +3,14 @@
 namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
+use App\site;
+use App\commerce;
+use App\item;
+use App\implementation;
+use App\detail_implementation;
+use App\payment_method_implementation;
 
 class pdfController extends Controller
 {
@@ -14,8 +21,7 @@ class pdfController extends Controller
      */
     public function index()
     {
-        $pdf = \PDF::loadView('implementation.update');
-        return $pdf->download('archivo.pdf');
+        
     }
 
     /**
@@ -45,9 +51,57 @@ class pdfController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
-    {
-        //
+    public function show($id_implementation)
+    {   
+
+       $implementation = DB::table('implementations')
+        ->join('sites', 'implementations.id_site', '=', 'sites.id_site')
+        ->join('commerces', 'commerces.id_commerce', '=','sites.id_commerce')
+        ->join('users as leader', 'leader.id','=','implementations.leader')
+        ->join('users as engineer', 'engineer.id','=','implementations.engineer')
+        ->join('type_integrations', 'type_integrations.id_type_integration','=','implementations.id_type_integration')
+        ->where('implementations.id_implementation', $id_implementation)
+        ->select('implementations.*', 'sites.name AS name_site','leader.name AS name_leader','engineer.name AS name_engineer','commerces.name AS name_commerce','type_integrations.name AS name_typeintegration')
+        ->get();
+
+           
+
+        $TC = DB::table('detail_implementations')
+        ->join('items as item', 'item.id_item', '=', 'detail_implementations.id_item')
+        ->where('detail_implementations.id_implementation', $id_implementation)
+        ->where('item.id_payment_methods',1)
+        ->select('detail_implementations.*','item.description')
+        ->get();
+        $PSE = DB::table('detail_implementations')
+        ->join('items as item', 'item.id_item', '=', 'detail_implementations.id_item')
+        ->where('detail_implementations.id_implementation', $id_implementation)
+        ->where('item.id_payment_methods',2)
+        ->select('detail_implementations.*','item.description')
+        ->get();
+        $TY = DB::table('detail_implementations')
+        ->join('items as item', 'item.id_item', '=', 'detail_implementations.id_item')
+        ->where('detail_implementations.id_implementation', $id_implementation)
+        ->where('item.id_payment_methods',3)
+        ->select('detail_implementations.*','item.description')
+        ->get();
+        $EF = DB::table('detail_implementations')
+        ->join('items as item', 'item.id_item', '=', 'detail_implementations.id_item')
+        ->where('detail_implementations.id_implementation', $id_implementation)
+        ->where('item.id_payment_methods',4)
+        ->select('detail_implementations.*','item.description')
+        ->get();
+        $EFP = DB::table('detail_implementations')
+        ->join('items as item', 'item.id_item', '=', 'detail_implementations.id_item')
+        ->where('detail_implementations.id_implementation', $id_implementation)
+        ->where('item.id_payment_methods',5)
+        ->select('detail_implementations.*','item.description')
+        ->get();
+
+
+        $view = view('implementation.update', compact('implementation','TC','PSE','TY','EF','EFP')); 
+        $pdf = \App::make('dompdf.wrapper');
+        $pdf->loadHTML($view);
+        return $pdf->stream();
     }
 
     /**

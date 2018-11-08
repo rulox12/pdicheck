@@ -1,9 +1,5 @@
 @extends('admin.layout')
 
-@section('link')
-
-@endsection
-
 @section('content')
   
   <div class="content-fluid">
@@ -26,8 +22,12 @@
             <!-- general form elements -->
             <div class="box box-success">
               <div class="box-header with-border">
-                <h3 class="box-title"><b>{{ $implementation[0]->name_site}}</b></h3>
-                
+                <h3 class="box-title"><b>{{ $implementation[0]->name_site}}</b></h3> 
+                <p class="pull-right">
+                  <a href="{{ route('pdf.show', $implementation[0]->id_implementation) }}" class="btn btn-success btn-sm ad-click-event">
+                      Exportar PDF
+                  </a>
+                </p>
               </div>
               @if ($errors->any())
                 <div class="alert alert-danger">
@@ -38,7 +38,7 @@
                   </ul>
                 </div><br/>
               @endif
-              <form method="POST" action="{!! route('implementation.update', $implementation[0]->id_implementation) !!}" role="form">
+              <form id="guardar" method="POST" action="{!! route('implementation.update', $implementation[0]->id_implementation) !!}" role="form">
                 {!! csrf_field() !!}
                 {!! method_field('PUT') !!}
                 <div class="box-body">
@@ -66,10 +66,10 @@
                         <div class="form-group">                     
                           <div class="row">
                             <div class="col-md-5 checkbox">
-                              <label><input type="checkbox" name="TC[]" value="{{ $item->id_detail_implementations }}">{{ $item->description }}</label>
+                              <label><input class="TC" type="checkbox" name="TC[]" value="{{ $item->id_detail_implementations }}">{{ $item->description }}</label>
                             </div>
                             <div class="col-md-6">
-                              <textarea class="col-md-12" name="TCD[]" value="{{ $item->observation }}"></textarea>
+                              <textarea class="TCD" class="col-md-12" name="TCD[{{ $item->id_detail_implementations }}]" value="{{ $item->observation }}"></textarea>
                             </div>
                           </div>
                         </div>
@@ -95,7 +95,7 @@
                               <label><input type="checkbox" name="PSE[]" value="{{ $item->id_item }}">{{ $item->description }}</label>
                             </div>
                             <div class="col-md-6">
-                              <textarea class="col-md-12" name="PSED[]" value="{{ $item->observation }}"></textarea>
+                              <textarea class="col-md-12" name="PSED[{{ $item->id_detail_implementations }}]" value="{{ $item->observation }}"></textarea>
                             </div>
                           </div>
                         </div>
@@ -121,7 +121,7 @@
                               <label><input type="checkbox" name="TY[]" value="{{ $item->id_item }}">{{ $item->description }}</label>
                             </div>
                             <div class="col-md-6">
-                              <textarea class="col-md-12" name="TYD[]" value="{{ $item->observation }}"></textarea>
+                              <textarea class="col-md-12" name="TYD[{{ $item->id_detail_implementations }}]" value="{{ $item->observation }}"></textarea>
                             </div>
                           </div>
                         </div>
@@ -147,7 +147,7 @@
                                 <label><input type="checkbox" name="EF[]" value="{{ $item->id_item }}">{{ $item->description }}</label>
                               </div>
                               <div class="col-md-6">
-                                <textarea class="col-md-12" name="EFD[]" value="{{ $item->observation }}"></textarea>
+                                <textarea class="col-md-12" name="EFD[{{ $item->id_detail_implementations }}]" value="{{ $item->observation }}"></textarea>
                               </div>
                             </div>
                           </div>
@@ -173,7 +173,7 @@
                                 <label><input type="checkbox" name="EFP[]" value="{{ $item->id_item }}">{{ $item->description }}</label>
                               </div>
                               <div class="col-md-6">
-                                <textarea class="col-md-12" name="EFPD[]" value="{{ $item->observation }}"></textarea>
+                                <textarea class="col-md-12" name="EFPD[{{ $item->id_detail_implementations }}]" value="{{ $item->observation }}"></textarea>
                               </div>
                             </div>
                           </div>
@@ -182,8 +182,9 @@
                     </div>
                   @endif
                 </div>
+                <textarea class="col-md-12" name="prueba" id="prueba"></textarea>
                 <div class="box-footer">
-                  <button type="submit" class="btn btn-primary">Guardar</button>
+                  <button id="Guardar" type="submit" class="btn btn-primary">Guardar</button>
                 </div>
                 
               </form>
@@ -202,6 +203,18 @@
     $('#myCollapsible').collapse({
       toggle: false
     })
-    $('.collapse').collapse()
+    $('.collapse').collapse();
+   
+    
+
+    $('#Guardar').click(function(){
+      if(!$('input[type=checkbox]').prop('checked')){
+        $('this').val('hola');
+      }
+        
+    });
+     
+    
+
   </script>
 @endsection
