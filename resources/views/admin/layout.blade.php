@@ -56,7 +56,13 @@ scratch. This page gets rid of all links and provides the needed markup only.
               <!-- The user image in the navbar-->
               <img src="{{ asset('adminlte/img/user1.png') }}" class="user-image" alt="User Image">
               <!-- hidden-xs hides the username on small devices so only the image appears. -->
-              <span class="hidden-xs">"Nombre Usuario"</span>
+              <span class="hidden-xs">
+                @auth
+                  {{ auth()->user()-name}}
+                @else
+                  no esta logueado
+                @endauth
+              </span>
             </a>
             <ul class="dropdown-menu">
               <!-- The user image in the menu -->
@@ -91,7 +97,13 @@ scratch. This page gets rid of all links and provides the needed markup only.
           <img src="{{ asset('adminlte/img/user1.png') }}" class="img-circle" alt="User Image">
         </div>
         <div class="pull-left info">
-          <p>"Nombre Usuario"</p>
+          <p>
+            @auth
+              {{ auth()->user()-name}}
+            @else
+              no esta logueado
+            @endauth
+          </p>
         </div>
       </div>
       <!-- Sidebar Menu -->

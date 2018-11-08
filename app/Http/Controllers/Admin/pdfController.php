@@ -98,7 +98,7 @@ class pdfController extends Controller
         ->get();
 
 
-        $view = view('implementation.update', compact('implementation','TC','PSE','TY','EF','EFP')); 
+        $view = view('implementation.pdf', compact('implementation','TC','PSE','TY','EF','EFP')); 
         $pdf = \App::make('dompdf.wrapper');
         $pdf->loadHTML($view);
         return $pdf->stream();
