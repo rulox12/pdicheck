@@ -73,7 +73,7 @@
                                   <label><input class="TC" type="checkbox" name="TC[]" value="{{ $item->id_detail_implementations }}" checked disabled>{{ $item->description }}</label>
                                 </div>
                                 <div class="col-md-6">
-                                  <textarea style="color: black;" class="TCD col-md-12" name="TCD[{{ $item->id_detail_implementations }}]">{{ $item->observation }}</textarea>
+                                  <textarea style="color: black;" class="TCD col-md-12" name="TCD[{{ $item->id_detail_implementations }}]" disabled>{{ $item->observation }}</textarea>
                                 </div>
                               </div>
                             </div>
@@ -115,7 +115,7 @@
                                   <label><input type="checkbox" name="PSE[]" value="{{ $item->id_detail_implementations }}" checked disabled>{{ $item->description }}</label>
                                 </div>
                                 <div class="col-md-6">
-                                  <textarea style="color: black;" class="PSED col-md-12" name="PSED[{{ $item->id_detail_implementations }}]">{{ $item->observation }}</textarea>
+                                  <textarea style="color: black;" class="PSED col-md-12" name="PSED[{{ $item->id_detail_implementations }}]" disabled>{{ $item->observation }}</textarea>
                                 </div>
                               </div>
                             </div>
@@ -157,7 +157,7 @@
                                   <label><input type="checkbox" name="TY[]" value="{{ $item->id_detail_implementations }}" checked disabled>{{ $item->description }}</label>
                                 </div>
                                 <div class="col-md-6">
-                                  <textarea style="color: black;" class="TYD col-md-12" name="TYD[{{ $item->id_detail_implementations }}]">{{ $item->observation }}</textarea>
+                                  <textarea style="color: black;" class="TYD col-md-12" name="TYD[{{ $item->id_detail_implementations }}]" disabled>{{ $item->observation }}</textarea>
                                 </div>
                               </div>
                             </div>
@@ -199,7 +199,7 @@
                                   <label><input type="checkbox" name="EF[]" value="{{ $item->id_detail_implementations }}" checked disabled>{{ $item->description }}</label>
                                 </div>
                                 <div class="col-md-6">
-                                  <textarea style="color: black;" class="EFD col-md-12" name="EFD[{{ $item->id_detail_implementations }}]">{{ $item->observation }}</textarea>
+                                  <textarea style="color: black;" class="EFD col-md-12" name="EFD[{{ $item->id_detail_implementations }}]" disabled>{{ $item->observation }}</textarea>
                                 </div>
                               </div>
                             </div>
@@ -241,7 +241,7 @@
                                   <label><input type="checkbox" name="EFP[]" value="{{ $item->id_detail_implementations }}" checked disabled>{{ $item->description }}</label>
                                 </div>
                                 <div class="col-md-6">
-                                  <textarea style="color: black;" class="EFPD col-md-12" name="EFPD[{{ $item->id_detail_implementations }}]">{{ $item->observation }}</textarea>
+                                  <textarea style="color: black;" class="EFPD col-md-12" name="EFPD[{{ $item->id_detail_implementations }}]" disabled>{{ $item->observation }}</textarea>
                                 </div>
                               </div>
                             </div>
@@ -266,7 +266,12 @@
                 @endif
               </div>
               <div class="box-footer">
+              @if($implementation[0]->progress == 100)
+                <button id="Guardar" type="submit" class="btn btn-primary" disabled>Guardar</button>
+              @else
                 <button id="Guardar" type="submit" class="btn btn-primary">Guardar</button>
+              @endif
+                
               </div>
               
             </form>
