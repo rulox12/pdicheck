@@ -46,244 +46,197 @@
                 <!-- left column -->
                 <div class="col-md-12">
                 <!-- general form elements -->
-                <div class="box box-success">
-                    <div class="box-header with-border">
-                    <h3 class="box-title"><b>{{ $implementation[0]->name_site}}</b></h3> 
+                    <div class="box box-success">
+                        <div class="box-header with-border">
+                        <h3 class="box-title"><b>{{ $implementation[0]->name_site}}</b></h3> 
+                        </div>
+                        @if ($errors->any())
+                        <div class="alert alert-danger">
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div><br/>
+                        @endif
+                        <div class="box-body">
+                            <div class="form-group">
+                            @csrf
+                            <h4 name="" for="name"><b>Comercio: </b>{{ $implementation[0]->name_commerce}}</h4>
+                            <h4 for="exampleInputPassword1"><b>Lider de Proyecto: </b>{{ $implementation[0]->name_leader}}</h4>
+                            <h4 for="exampleInputPassword1"><b>Ingeniero: </b>{{ $implementation[0]->name_engineer}}</h4>
+                            <h4 for="exampleInputPassword1"><b>Fecha de Inicio: </b>{{ $implementation[0]->start_date}}</h4>
+                            <h4 for="exampleInputPassword1"><b>Modelo de recaudo: </b>{{ $implementation[0]->compensation}}</h4>
+                            <h4 for="exampleInputPassword1"><b>Tipo de Integración: </b>{{ $implementation[0]->name_typeintegration}}</h4>
+                            </div>
+                            @if(!empty($TC[0]))
+                            <div class="panel box box-success">
+                                <div class="box-header with-border">
+                                    <h3 class="box-title">
+                                        <b>Tarjetas de Credito</b>
+                                    </h3>
+                                </div>
+                                <div id="collapseTC" class="panel-collapse" aria-expanded="true">
+                                    <div class="box-body">
+                                        @foreach ($TC as $item)
+                                            @if($item->status == 1 )
+                                                <div class="row alert alert-success alert-dismissible">
+                                                    <h4><b>{{ $item->description }}</b></h4>
+                                                    <div class="col-md-6 checkbox">
+                                                        <label style="color: black;" class="TCD col-md-12" name="TCD[{{ $item->id_detail_implementations }}]">{{ $item->observation }}</label>
+                                                    </div>
+                                                </div>
+                                            @else
+                                                <div class="row">                     
+                                                    <h4><b>{{ $item->description }}</b></h4>
+                                                    <div class="col-md-6 checkbox">
+                                                        <label style="color: black;" class="TCD col-md-12" name="TCD[{{ $item->id_detail_implementations }}]">{{ $item->observation }}</label>
+                                                    </div>
+                                                </div>
+                                            @endif
+                                        @endforeach
+                                    </div>
+                                </div>
+                            </div>
+                            @endif
+                            @if(!empty($PSE[0]))
+                                <div class="panel box box-success">
+                                    <div class="box-header with-border">
+                                        <h3 class="box-title">
+                                            <b>PSE</b>
+                                        </h3>
+                                    </div>
+                                    <div id="collapsePSE" class="panel-collapse" aria-expanded="true">
+                                        <div class="box-body">
+                                            @foreach ($PSE as $item)
+                                                @if($item->status == 1 )
+                                                    <div class="row alert alert-success alert-dismissible" role="alert">                     
+                                                        <h4><b>{{ $item->description }}</b></h4>
+                                                        <div class="col-md-6">
+                                                            <label style="color: black;" class="PSED col-md-12 pull-right" name="PSED[{{ $item->id_detail_implementations }}]">{{ $item->observation }}</label>
+                                                        </div>
+                                                    </div>
+                                                @else                     
+                                                    <div class="row" role="alert">
+                                                        <div class="col-md-5 checkbox">
+                                                            <label><input type="checkbox" name="PSE[]" value="{{ $item->id_detail_implementations }}">{{ $item->description }}</label>
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            <label style="color: black;" class="PSED col-md-12 pull-right" name="PSED[{{ $item->id_detail_implementations }}]">{{ $item->observation }}</label>
+                                                        </div>
+                                                    </div>
+                                                @endif
+                                            @endforeach
+                                        </div>
+                                    </div>
+                                </div>
+                            @endif
+                            @if(!empty($TY[0]))
+                                <div class="panel box box-success">
+                                    <div class="box-header with-border">
+                                        <h3 class="box-title">
+                                            <b>TUYA</b>
+                                        </h3>
+                                    </div>
+                                    <div id="collapseTY" class="panel-collapse" aria-expanded="true">
+                                        <div class="box-body">
+                                            @foreach ($TY as $item)
+                                                @if($item->status == 1 )                    
+                                                    <div class="row alert alert-success alert-dismissible" role="alert">
+                                                        <div class="col-md-5 checkbox">
+                                                            <h4><b>{{ $item->description }}</b></h4>
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            <label style="color: black;" class="TYD col-md-12" name="TYD[{{ $item->id_detail_implementations }}]">{{ $item->observation }}</label>
+                                                        </div>
+                                                    </div>
+                                                @else                     
+                                                    <div class="row" role="alert">
+                                                        <div class="col-md-5 checkbox">
+                                                            <h4><b>{{ $item->description }}</b></h4>
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            <label style="color: black;" class="TYD col-md-12" name="TYD[{{ $item->id_detail_implementations }}]">{{ $item->observation }}</label>
+                                                        </div>
+                                                    </div>
+                                                @endif
+                                            @endforeach
+                                        </div>
+                                    </div>
+                                </div>
+                            @endif
+                            @if(!empty($EF[0]))
+                                <div class="panel box box-success">
+                                    <div class="box-header with-border">
+                                        <h3 class="box-title">
+                                            <b>Efectivo</b>
+                                        </h3>
+                                    </div>
+                                    <div id="collapseEF" class="panel-collapse" aria-expanded="true">
+                                        <div class="box-body">
+                                            @foreach ($EF as $item)
+                                                @if($item->status == 1 )                    
+                                                    <div class="row alert alert-success alert-dismissible" role="alert">
+                                                        <div class="col-md-5 checkbox">
+                                                            <h4><b>{{ $item->description }}</b></h4>
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            <label style="color: black;" class="EFD col-md-12" name="EFD[{{ $item->id_detail_implementations }}]">{{ $item->observation }}</label>
+                                                        </div>
+                                                    </div>
+                                                @else
+                                                    <div class="box-body">                     
+                                                        <div class="row" role="alert">
+                                                            <div class="col-md-5 checkbox">
+                                                                <h4><b>{{ $item->description }}</b></h4>
+                                                            </div>
+                                                            <div class="col-md-6">
+                                                                <label style="color: black;" class="EFD col-md-12" name="EFD[{{ $item->id_detail_implementations }}]">{{ $item->observation }}</label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                @endif
+                                            @endforeach
+                                        </div>
+                                    </div>
+                                </div>
+                            @endif
+                            @if(!empty($EFP[0]))
+                            <div class="panel box box-success">
+                                <div class="box-header with-border">
+                                    <h3 class="box-title">
+                                        <b>Efectivo Propio</b>
+                                    </h3>
+                                </div>
+                                <div id="collapseEFP" class="panel-collapse" aria-expanded="true">
+                                    <div class="box-body">
+                                        @foreach ($EFP as $item)
+                                            @if($item->status == 1 )
+                                                <div class="row alert alert-success alert-dismissible" role="alert">
+                                                    <div class="col-md-5 checkbox">
+                                                        <h4><b>{{ $item->description }}</b></h4>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <label style="color: black;" class="EFPD col-md-12" name="EFPD[{{ $item->id_detail_implementations }}]">{{ $item->observation }}</label>
+                                                    </div>
+                                                </div>
+                                            @else               
+                                                <div class="row" role="alert">
+                                                    <div class="col-md-5 checkbox">
+                                                        <h4><b>{{ $item->description }}</b></h4>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <label style="color: black;" class="EFPD col-md-12" name="EFPD[{{ $item->id_detail_implementations }}]">{{ $item->observation }}</label>
+                                                    </div>
+                                                </div>
+                                            @endif
+                                        @endforeach
+                                    </div>
+                                </div>
+                            </div>
+                            @endif
+                        </div>
                     </div>
-                    @if ($errors->any())
-                    <div class="alert alert-danger">
-                        <ul>
-                            @foreach ($errors->all() as $error)
-                            <li>{{ $error }}</li>
-                            @endforeach
-                        </ul>
-                    </div><br/>
-                    @endif
-                    <form id="guardar" method="POST" action="{!! route('implementation.update', $implementation[0]->id_implementation) !!}" role="form">
-                    {!! csrf_field() !!}
-                    {!! method_field('PUT') !!}
-                    <div class="box-body">
-                        <div class="form-group">
-                        @csrf
-                        <h4 name="" for="name"><b>Comercio: </b>{{ $implementation[0]->name_commerce}}</h4>
-                        <h4 for="exampleInputPassword1"><b>Lider de Proyecto: </b>{{ $implementation[0]->name_leader}}</h4>
-                        <h4 for="exampleInputPassword1"><b>Ingeniero: </b>{{ $implementation[0]->name_engineer}}</h4>
-                        <h4 for="exampleInputPassword1"><b>Fecha de Inicio: </b>{{ $implementation[0]->start_date}}</h4>
-                        <h4 for="exampleInputPassword1"><b>Modelo de recaudo: </b>{{ $implementation[0]->compensation}}</h4>
-                        <h4 for="exampleInputPassword1"><b>Tipo de Integración: </b>{{ $implementation[0]->name_typeintegration}}</h4>
-                        </div>
-                        @if(!empty($TC[0]))
-                        <div class="panel box box-success">
-                            <div class="box-header with-border">
-                            <h4 class="box-title">
-                                <a data-toggle="collapse" data-parent="#accordion" href="#collapseTC" aria-expanded="true">
-                                Tarjetas de Credito
-                                </a>
-                            </h4>
-                            </div>
-                            <div id="collapseTC" class="panel-collapse" aria-expanded="true">
-                            @foreach ($TC as $item)
-                                @if($item->status == 1 )
-                                <div class="box-body">
-                                    <div class="form-group">                     
-                                    <div class="row alert alert-success alert-dismissible" role="alert">
-                                        <div class="col-md-5 checkbox">
-                                            <label><input class="TC" type="checkbox" name="TC[]" value="{{ $item->id_detail_implementations }}" checked disabled>{{ $item->description }}</label>
-                                            <label style="color: black;" class="TCD col-md-12 pull-right" name="TCD[{{ $item->id_detail_implementations }}]">{{ $item->observation }}</label>
-                                        </div>
-                                    </div>
-                                    </div>
-                                </div>
-                                @else
-                                <div class="box-body">
-                                    <div class="form-group">                     
-                                    <div class="row" role="alert">
-                                        <div class="col-md-5 checkbox">
-                                            <label><input class="TC" type="checkbox" name="TC[]" value="{{ $item->id_detail_implementations }}">{{ $item->description }}</label>
-                                            <label style="color: black;" class="TCD col-md-12 pull-right" name="TCD[{{ $item->id_detail_implementations }}]">{{ $item->observation }}</label>
-                                        </div>
-                                    </div>
-                                    </div>
-                                </div>
-                                @endif
-                            @endforeach
-                            </div>
-                        </div>
-                        @endif
-                        @if(!empty($PSE[0]))
-                        <div class="panel box box-success">
-                            <div class="box-header with-border">
-                            <h4 class="box-title">
-                                <a data-toggle="collapse" data-parent="#accordion" href="#collapsePSE" aria-expanded="true">
-                                PSE
-                                </a>
-                            </h4>
-                            </div>
-                            <div id="collapsePSE" class="panel-collapse" aria-expanded="true">
-                            @foreach ($PSE as $item)
-                                @if($item->status == 1 )
-                                <div class="box-body">
-                                    <div class="form-group">                     
-                                    <div class="row alert alert-success alert-dismissible" role="alert">
-                                        <div class="col-md-5 checkbox">
-                                        <label><input type="checkbox" name="PSE[]" value="{{ $item->id_detail_implementations }}" checked disabled>{{ $item->description }}</label>
-                                        </div>
-                                        <div class="col-md-6">
-                                        <label style="color: black;" class="PSED col-md-12" name="PSED[{{ $item->id_detail_implementations }}]">{{ $item->observation }}</label>
-                                        </div>
-                                    </div>
-                                    </div>
-                                </div>
-                                @else
-                                <div class="box-body">
-                                    <div class="form-group">                     
-                                    <div class="row" role="alert">
-                                        <div class="col-md-5 checkbox">
-                                        <label><input type="checkbox" name="PSE[]" value="{{ $item->id_detail_implementations }}">{{ $item->description }}</label>
-                                        </div>
-                                        <div class="col-md-6">
-                                        <label style="color: black;" class="PSED col-md-12" name="PSED[{{ $item->id_detail_implementations }}]">{{ $item->observation }}</label>
-                                        </div>
-                                    </div>
-                                    </div>
-                                </div>
-                                @endif
-                            @endforeach
-                            </div>
-                        </div>
-                        @endif
-                        @if(!empty($TY[0]))
-                        <div class="panel box box-success">
-                            <div class="box-header with-border">
-                            <h4 class="box-title">
-                                <a data-toggle="collapse" data-parent="#accordion" href="#collapseTY" aria-expanded="true">
-                                TUYA
-                                </a>
-                            </h4>
-                            </div>
-                            <div id="collapseTY" class="panel-collapse" aria-expanded="true">
-                            @foreach ($TY as $item)
-                                @if($item->status == 1 )
-                                <div class="box-body">
-                                    <div class="form-group">                     
-                                    <div class="row alert alert-success alert-dismissible" role="alert">
-                                        <div class="col-md-5 checkbox">
-                                        <label><input type="checkbox" name="TY[]" value="{{ $item->id_detail_implementations }}" checked disabled>{{ $item->description }}</label>
-                                        </div>
-                                        <div class="col-md-6">
-                                        <label style="color: black;" class="TYD col-md-12" name="TYD[{{ $item->id_detail_implementations }}]">{{ $item->observation }}</label>
-                                        </div>
-                                    </div>
-                                    </div>
-                                </div>
-                                @else
-                                <div class="box-body">
-                                    <div class="form-group">                     
-                                    <div class="row" role="alert">
-                                        <div class="col-md-5 checkbox">
-                                        <label><input type="checkbox" name="TY[]" value="{{ $item->id_detail_implementations }}">{{ $item->description }}</label>
-                                        </div>
-                                        <div class="col-md-6">
-                                        <label style="color: black;" class="TYD col-md-12" name="TYD[{{ $item->id_detail_implementations }}]">{{ $item->observation }}</label>
-                                        </div>
-                                    </div>
-                                    </div>
-                                </div>
-                                @endif
-                            @endforeach
-                            </div>
-                        </div>
-                        @endif
-                        @if(!empty($EF[0]))
-                        <div class="panel box box-success">
-                            <div class="box-header with-border">
-                            <h4 class="box-title">
-                                <a data-toggle="collapse" data-parent="#accordion" href="#collapseEF" aria-expanded="true">
-                                Efectivo
-                                </a>
-                            </h4>
-                            </div>
-                            <div id="collapseEF" class="panel-collapse" aria-expanded="true">
-                            @foreach ($EF as $item)
-                                @if($item->status == 1 )
-                                <div class="box-body">
-                                    <div class="form-group">                     
-                                    <div class="row alert alert-success alert-dismissible" role="alert">
-                                        <div class="col-md-5 checkbox">
-                                        <label><input type="checkbox" name="EF[]" value="{{ $item->id_detail_implementations }}" checked disabled>{{ $item->description }}</label>
-                                        </div>
-                                        <div class="col-md-6">
-                                        <label style="color: black;" class="EFD col-md-12" name="EFD[{{ $item->id_detail_implementations }}]">{{ $item->observation }}</label>
-                                        </div>
-                                    </div>
-                                    </div>
-                                </div>
-                                @else
-                                <div class="box-body">
-                                    <div class="form-group">                     
-                                    <div class="row" role="alert">
-                                        <div class="col-md-5 checkbox">
-                                        <label><input type="checkbox" name="EF[]" value="{{ $item->id_detail_implementations }}">{{ $item->description }}</label>
-                                        </div>
-                                        <div class="col-md-6">
-                                        <label style="color: black;" class="EFD col-md-12" name="EFD[{{ $item->id_detail_implementations }}]">{{ $item->observation }}</label>
-                                        </div>
-                                    </div>
-                                    </div>
-                                </div>
-                                @endif
-                            @endforeach
-                            </div>
-                        </div>
-                        @endif
-                        @if(!empty($EFP[0]))
-                        <div class="panel box box-success">
-                            <div class="box-header with-border">
-                            <h4 class="box-title">
-                                <a data-toggle="collapse" data-parent="#accordion" href="#collapseEFP" aria-expanded="true">
-                                Efectivo Propio
-                                </a>
-                            </h4>
-                            </div>
-                            <div id="collapseEFP" class="panel-collapse" aria-expanded="true">
-                            @foreach ($EFP as $item)
-                                @if($item->status == 1 )
-                                <div class="box-body">
-                                    <div class="form-group">                     
-                                    <div class="row alert alert-success alert-dismissible" role="alert">
-                                        <div class="col-md-5 checkbox">
-                                        <label><input type="checkbox" name="EFP[]" value="{{ $item->id_detail_implementations }}" checked disabled>{{ $item->description }}</label>
-                                        </div>
-                                        <div class="col-md-6">
-                                        <label style="color: black;" class="EFPD col-md-12" name="EFPD[{{ $item->id_detail_implementations }}]">{{ $item->observation }}</label>
-                                        </div>
-                                    </div>
-                                    </div>
-                                </div>
-                                @else
-                                <div class="box-body">
-                                    <div class="form-group">                     
-                                    <div class="row" role="alert">
-                                        <div class="col-md-5 checkbox">
-                                        <label><input type="checkbox" name="EFP[]" value="{{ $item->id_detail_implementations }}">{{ $item->description }}</label>
-                                        </div>
-                                        <div class="col-md-6">
-                                        <label style="color: black;" class="EFPD col-md-12" name="EFPD[{{ $item->id_detail_implementations }}]">{{ $item->observation }}</label>
-                                        </div>
-                                    </div>
-                                    </div>
-                                </div>
-                                @endif
-                            @endforeach
-                            </div>
-                        </div>
-                        @endif
-                    </div>
-                    
-                    
-                    </form>
-
-                </div>
                 </div>
             </div>
             <!-- /.row -->
