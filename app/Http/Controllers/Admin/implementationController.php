@@ -12,6 +12,7 @@ use App\item;
 use App\implementation;
 use App\detail_implementation;
 use App\payment_method_implementation;
+use DateTime;
 
 class implementationController extends Controller
 {
@@ -87,6 +88,7 @@ class implementationController extends Controller
             $paymentmethodimplementation = payment_method_implementation::create(
                 $implementation->id,5);
         }
+        return $this->index();
         
     }
 
@@ -195,10 +197,14 @@ class implementationController extends Controller
             ->get();
             $countitemsI=count($dimplementations);
             $countitemsICheck=count($dimplementationscheck);    
-        
-            $detail_implementation = implementation::where('id_implementation',$id)
+            if($countitemsI==$countitemsICheck){
+                $detail_implementation = implementation::where('id_implementation',$id)
+                    ->update(["progress" =>$countitemsICheck*100/$countitemsI,"end_date" => new DateTime()]);
+            }else{
+                $detail_implementation = implementation::where('id_implementation',$id)
                 ->update(["progress" =>$countitemsICheck*100/$countitemsI ]);
-            
+            }
+            return $this->index();
     }
 
     public function changeState($arrayitem,$arraydescription)
@@ -209,7 +215,7 @@ class implementationController extends Controller
                 ->update(["status" => "1","observation"=>$arraydescription[$item]]);
             }
         }
-        return;
+        return ;
 
     }
     /**

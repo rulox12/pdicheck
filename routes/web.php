@@ -30,6 +30,10 @@ Route::resource('implementation', 'admin\implementationController');
 
 Route::resource('pdf', 'admin\pdfController');
 
+
+Route::get('/registeruser', 'Auth\RegisterController@index');
+
+
 Route::get('/pdft', function(){
     $pdf = resolve('dompdf.wrapper');
     $pdf->loadHTML('<h1>Test</h1>');

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\User;
+use App\Role;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -35,6 +36,12 @@ class RegisterController extends Controller
      *
      * @return void
      */
+    public function index()
+    {
+        $rols = Role::All();
+        
+        return view('auth/register',compact('rols'));
+    }
     public function __construct()
     {
         $this->middleware('guest');
@@ -70,7 +77,8 @@ class RegisterController extends Controller
         ]);
         $user
             ->roles()
-            ->attach(Role::where('name', 'user')->first());
+            ->attach(Role::where('id', $data['rol'])->first());
+            $user->save();
         return $user;
     }
 }
