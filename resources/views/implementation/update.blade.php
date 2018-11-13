@@ -1,7 +1,6 @@
 @extends('admin.layout')
 
-@section('content')
-  
+@section('content')  
   <div class="content-fluid">
     <!-- Content Header (Page header) -->
     @section('Page header')
@@ -283,7 +282,6 @@
     </section>
     <!-- /.content -->
   </div>
-
 @endsection
 @section('script')
   <script type="text/javascript">
