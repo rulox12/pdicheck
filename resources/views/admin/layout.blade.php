@@ -20,6 +20,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
  
   <link rel="stylesheet" href="{{ asset('adminlte/css/skins/skin-blue.min.css') }}">
 
+  <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+
   @yield('link')
 
   <!-- Google Font -->
@@ -106,46 +108,62 @@ scratch. This page gets rid of all links and provides the needed markup only.
           </p>
         </div>
       </div>
-      <!-- Sidebar Menu -->
-      <ul class="sidebar-menu" data-widget="tree">
-        <li class="treeview">
-          <a href="#"><i class="fa fa-building"></i></i> <span>Comercios</span>
-            <span class="pull-right-container">
-                <i class="fa fa-angle-left pull-right"></i>
-              </span>
-          </a>
-          <ul class="treeview-menu">
-            <li><a href="{{ route('commerces.index') }}">Ver comercios</a></li>
-            <li><a href="{{ route('commerces.create') }}">Crear comercio</a></li>
-          </ul>
-        </li>
-        <li class="treeview">
-          <a href="#"><i class="fa fa-check-square"></i> <span>Implementation</span>
-            <span class="pull-right-container">
-                <i class="fa fa-angle-left pull-right"></i>
-              </span>
-          </a>
-          <ul class="treeview-menu">
-            <li><a href="{{ route('implementation.index') }}">Ver implementation</a></li>
-            <li><a href="{{ route('implementation.create') }}">Crear implementation</a></li>
-          </ul>
-        </li>
-        <li class="treeview">
-          <a href="#"><i class="fa fa-link"></i> <span>Tipo Integración</span>
-            <span class="pull-right-container">
-                <i class="fa fa-angle-left pull-right"></i>
-              </span>
-          </a>
-          <ul class="treeview-menu">
-            <li><a href="{{ route('integrationtype.index') }}">Ver implementation</a></li>
-            <li><a href="{{ route('integrationtype.create') }}">Crear implementation</a></li>
-          </ul>
-        </li>
-      </ul>
+      @auth
+        <!-- Sidebar Menu -->
+        <ul class="sidebar-menu" data-widget="tree">
+          <li class="treeview">
+            <a href="#"><i class="fa fa-building"></i></i> <span>Comercios</span>
+              <span class="pull-right-container">
+                  <i class="fa fa-angle-left pull-right"></i>
+                </span>
+            </a>
+            <ul class="treeview-menu">
+              <li><a href="{{ route('commerces.index') }}">Ver comercios</a></li>
+              <li><a href="{{ route('commerces.create') }}">Crear comercio</a></li>
+            </ul>
+          </li>
+          <li class="treeview">
+            <a href="#"><i class="fa fa-check-square"></i> <span>Implementation</span>
+              <span class="pull-right-container">
+                  <i class="fa fa-angle-left pull-right"></i>
+                </span>
+            </a>
+            <ul class="treeview-menu">
+              <li><a href="{{ route('implementation.index') }}">Ver implementation</a></li>
+              <li><a href="{{ route('implementation.create') }}">Crear implementation</a></li>
+            </ul>
+          </li>
+          <li class="treeview">
+            <a href="#"><i class="fa fa-link"></i> <span>Tipo Integración</span>
+              <span class="pull-right-container">
+                  <i class="fa fa-angle-left pull-right"></i>
+                </span>
+            </a>
+            <ul class="treeview-menu">
+              <li><a href="{{ route('integrationtype.index') }}">Ver implementation</a></li>
+              <li><a href="{{ route('integrationtype.create') }}">Crear implementation</a></li>
+            </ul>
+          </li>
+        </ul>
+      @endauth  
       <!-- /.sidebar-menu -->
     </section>
     <!-- /.sidebar -->
   </aside>
+  <div class="content-wrapper">
+    @auth
+      <!-- Content Header (Page header) -->
+      @yield('Page header')
+      
+      <section class="content container-fluid">
+        @yield('content')
+      </section>
+      <!-- /.content -->
+    @else  
+      <h1>Debe Iniciar Sesión</h1>
+    @endauth  
+  </div>
+
 
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
