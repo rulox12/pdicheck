@@ -79,6 +79,6 @@ class RegisterController extends Controller
             ->roles()
             ->attach(Role::where('id', $data['rol'])->first());
             $user->save();
-        return $user;
+        return view();
     }
 }

@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\commerce;
+use RealRashid\SweetAlert\Facades\Alert;
+
 
 class commerceController extends Controller
 {
@@ -39,8 +41,13 @@ class commerceController extends Controller
     {
         //
         commerce::create($request);
-        $commerce = commerce::All();       
-        return view('site.index', compact('commerce'));
+        $commerce = commerce::All();
+        //toast('Your Post as been submited!','success','top-right');
+        //dd("commerce");
+        Alert::success('Excelente', 'Comercio creado correctamente');
+        //alert()->html('<i>HTML</i> <u><h3>Excelente</h3></u>'," You can use <b>bold text</b>, <a href='//github.com'>links</a> Comercio creado correctamente ",'success');
+
+        return view('commerce.table', compact('commerce'));
     }
 
     /**

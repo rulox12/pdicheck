@@ -118,12 +118,15 @@ return [
     | this array to grant expanded functionality to your applications.
     |
     */
+    'Alert' => RealRashid\SweetAlert\Facades\Alert::class,
+
 
     'providers' => [
 
         /*
          * Laravel Framework Service Providers...
          */
+        RealRashid\SweetAlert\SweetAlertServiceProvider::class,
         Illuminate\Auth\AuthServiceProvider::class,
         Illuminate\Broadcasting\BroadcastServiceProvider::class,
         Illuminate\Bus\BusServiceProvider::class,
