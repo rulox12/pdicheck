@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <!--
 This is a starter template page. Use this page to start your new project from
@@ -29,6 +30,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
         href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
+@auth
 @include('sweetalert::alert')`
 <div class="wrapper">
 
@@ -152,7 +154,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <!-- /.sidebar -->
   </aside>
   <div class="content-wrapper">
-    @auth
+    
       <!-- Content Header (Page header) -->
       @yield('Page header')
       
@@ -160,9 +162,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
         @yield('content')
       </section>
       <!-- /.content -->
-    @else  
-      <h1>Debe Iniciar Sesión</h1>
-    @endauth  
   </div>
 
 
@@ -270,6 +269,21 @@ scratch. This page gets rid of all links and provides the needed markup only.
   immediately after the control sidebar -->
   <div class="control-sidebar-bg"></div>
 </div>
+@else
+<div class="container alert alert-danger text-center" role="alert">
+  <div class="row">
+    <div class="col-md-3">
+    </div>
+    <div class="col-md-6 align-middle">
+      <div class="alert alert-danger text-center" role="alert">
+        <h1>Debe Iniciar Sesión</h1>
+      </div>
+    </div>
+  </div>
+</div>
+  
+  
+@endauth 
 <!-- ./wrapper -->
 
 <!-- REQUIRED JS SCRIPTS -->
@@ -290,3 +304,5 @@ scratch. This page gets rid of all links and provides the needed markup only.
      user experience. -->
 </body>
 </html>
+
+ 
