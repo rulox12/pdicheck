@@ -31,7 +31,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
 @auth
-@include('sweetalert::alert')`
+@include('sweetalert::alert')
 <div class="wrapper">
 
   <!-- Main Header -->
@@ -163,25 +163,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
       </section>
       <!-- /.content -->
   </div>
-
-
-  <!-- Content Wrapper. Contains page content -->
-  <div class="content-wrapper">
-    <!-- Content Header (Page header) -->
-    @yield('Page header')
-    
-    <!-- Main content -->
-    <section class="content container-fluid">
-      @yield('content')
-      <!--------------------------
-        | Your Page Content Here |
-        -------------------------->
-
-    </section>
-    <!-- /.content -->
-  </div>
-  <!-- /.content-wrapper -->
-
   <!-- Main Footer -->
   <footer class="main-footer">
     <!-- To the right -->
