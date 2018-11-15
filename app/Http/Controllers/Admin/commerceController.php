@@ -39,12 +39,14 @@ class commerceController extends Controller
      */
     public function store(Request $request)
     {
-        //
-        commerce::create($request);
+        if($request->get('nit')==null || $request->get('name')==null){
+            Alert::error('Error', 'Faltan campos');
+        }else{
+            commerce::create($request);
+        }
         $commerce = commerce::All();
         //toast('Your Post as been submited!','success','top-right');
         //dd("commerce");
-        Alert::success('Excelente', 'Comercio creado correctamente');
         //alert()->html('<i>HTML</i> <u><h3>Excelente</h3></u>'," You can use <b>bold text</b>, <a href='//github.com'>links</a> Comercio creado correctamente ",'success');
 
         return view('commerce.table', compact('commerce'));
