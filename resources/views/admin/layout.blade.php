@@ -75,7 +75,11 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 <img src="{{ asset('adminlte/img/user1.png') }}" class="img-circle" alt="User Image">
 
                 <p>
-                  "Nombre Usuario - Rol"
+                  @auth
+                  {{ auth()->user()->name}} 
+                @else
+                  no esta logueado
+                @endauth
                 </p>
               </li>
               <!-- Menu Footer-->
@@ -137,14 +141,16 @@ scratch. This page gets rid of all links and provides the needed markup only.
             </ul>
           </li>
           <li class="treeview">
-            <a href="#"><i class="fa fa-link"></i> <span>Tipo Integración</span>
+            <a href="#"><i class="fa fa-link"></i> <span>Varios</span>
               <span class="pull-right-container">
                   <i class="fa fa-angle-left pull-right"></i>
                 </span>
             </a>
             <ul class="treeview-menu">
               <li><a href="{{ route('integrationtype.index') }}">Ver implementation</a></li>
+              <li><a href="{{ route('item.index') }}">Ver Items</a></li>
               <li><a href="{{ route('integrationtype.create') }}">Crear implementation</a></li>
+              <li><a href="{{ route('item.create') }}">Crear Item</a></li>
             </ul>
           </li>
         </ul>

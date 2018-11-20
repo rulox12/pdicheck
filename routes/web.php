@@ -24,6 +24,8 @@ Route::resource('sites', 'Admin\siteController');
 
 Route::resource('commerces', 'Admin\commerceController');
 
+Route::resource('item', 'Admin\itemController');
+
 Route::resource('integrationtype', 'Admin\typeIntegrationController');
 
 Route::resource('implementation', 'admin\implementationController');
