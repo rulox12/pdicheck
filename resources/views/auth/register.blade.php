@@ -36,11 +36,11 @@
                   <div class="form-group">
                         @csrf
                     <label for="exampleInputPassword1">Nombre: </label>
-                    <input type="text" class="form-control" name="name" placeholder="nombre">
+                    <input type="text" class="form-control" name="name" placeholder="nombre" required>
                   </div>
                   <div class="form-group">
                     <label for="exampleInputPassword1">Correo: </label>
-                    <input type="text" class="form-control" name="email" placeholder="nombre">
+                    <input type="text" class="form-control" name="email" placeholder="Correo" required>
                   </div>
                   <div class="form-group">
                         @csrf

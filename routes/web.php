@@ -17,7 +17,7 @@ Auth::routes();
 Route::get('/up', function(){
     return view('implementation/update');
 });
-Route::get('/', 'Admin\commerceController@index')->name('home');
+Route::get('/', 'HomeController@index')->name('home');
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::resource('sites', 'Admin\siteController');
@@ -35,6 +35,7 @@ Route::resource('pdf', 'admin\pdfController');
 
 Route::get('/register', 'admin\RegisterController@create')->name('indexcreateuser');
 Route::post('/registeruser', 'admin\RegisterController@store')->name('createuser');
+Route::get('/getusers', 'admin\RegisterController@getusers')->name('getusers');
 
 
 Route::get('/pdft', function(){

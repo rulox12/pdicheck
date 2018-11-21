@@ -85,9 +85,16 @@ scratch. This page gets rid of all links and provides the needed markup only.
               <!-- Menu Footer-->
               <li class="user-footer">
                 <div class="pull-right">
-                  <a href="#" class="btn btn-default btn-flat">Sign out</a>
+                  <a href={{ route('logout') }} class="btn btn-default btn-flat"onclick="event.preventDefault();
+                  document.getElementById('logout-form').submit();">
+                  {{ __('Cerrar Sesion') }}
+                    </a>
+                  
                 </div>
               </li>
+              <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                @csrf
+            </form>
             </ul>
           </li>
         </ul>
@@ -161,6 +168,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
               <li><a href="{{ route('integrationtype.create') }}">Crear implementation</a></li>
               <li><a href="{{ route('item.create') }}">Crear Item</a></li>
               <li><a href="{{ route('indexcreateuser') }}">Crear Usuario</a></li>
+              <li><a href="{{ route('getusers') }}">Ver Usuarios</a></li>
 
             </ul>
           </li>
@@ -268,18 +276,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <div class="control-sidebar-bg"></div>
 </div>
 @else
-<div class="container alert alert-danger text-center" role="alert">
-  <div class="row">
-    <div class="col-md-3">
-    </div>
-    <div class="col-md-6 align-middle">
-      <div class="alert alert-danger text-center" role="alert">
-        <h1>Debe Iniciar Sesión</h1>
-      </div>
-    </div>
-  </div>
-</div>
-  
+
   
 @endauth 
 <!-- ./wrapper -->

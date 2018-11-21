@@ -42,6 +42,7 @@ class commerceController extends Controller
         if($request->get('nit')==null || $request->get('name')==null){
             Alert::error('Error', 'Faltan campos');
         }else{
+            Alert::success('Excelente', 'Se registro correctamente');
             commerce::create($request);
         }
         $commerce = commerce::All();
