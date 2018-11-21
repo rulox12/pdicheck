@@ -63,16 +63,36 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 <!-- hidden-xs hides the username on small devices so only the image appears. -->
                 <span class="hidden-xs">
                   @auth
-                    {{ auth()->user()->name}}
-                  @else
-                    no esta logueado
-                  @endauth
-                </span>
-              </a>
-              <ul class="dropdown-menu">
-                <!-- The user image in the menu -->
-                <li class="user-header">
-                  <img src="{{ asset('adminlte/img/user1.png') }}" class="img-circle" alt="User Image">
+                  {{ auth()->user()->name}} 
+                @else
+                  no esta logueado
+                @endauth
+                </p>
+              </li>
+              <!-- Menu Footer-->
+              <li class="user-footer">
+                <div class="pull-right">
+                  <a href={{ route('logout') }} class="btn btn-default btn-flat"onclick="event.preventDefault();
+                  document.getElementById('logout-form').submit();">
+                  {{ __('Cerrar Sesion') }}
+                    </a>
+                  
+                </div>
+              </li>
+              <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                @csrf
+            </form>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+  <!-- Left side column. contains the logo and sidebar -->
+  <aside class="main-sidebar">
+
+    <!-- sidebar: style can be found in sidebar.less -->
+    <section class="sidebar">
 
                   <p>
                     @auth
@@ -115,6 +135,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
             </p>
           </div>
         </div>
+<<<<<<< HEAD
         @auth
           <!-- Sidebar Menu -->
           <ul class="sidebar-menu" data-widget="tree">
@@ -161,6 +182,56 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 <li><a href="{{ route('integrationtype.create') }}">Crear implementation</a></li>
                 <li><a href="{{ route('item.create') }}">Crear Item</a></li>
                 <li><a href="{{ route('indexcreateuser') }}">Crear Usuario</a></li>
+=======
+      </div>
+      @auth
+        <!-- Sidebar Menu -->
+        <ul class="sidebar-menu" data-widget="tree">
+          <li class="treeview">
+            <a href="#"><i class="fa fa-building"></i></i> <span>Comercios</span>
+              <span class="pull-right-container">
+                  <i class="fa fa-angle-left pull-right"></i>
+                </span>
+            </a>
+            <ul class="treeview-menu">
+              <li><a href="{{ route('commerces.index') }}">Ver comercios</a></li>
+              <li><a href="{{ route('commerces.create') }}">Crear comercio</a></li>
+            </ul>
+          </li>
+          <li class="treeview">
+            <a href="#"><i class="fa fa-check-square"></i> <span>Implementation</span>
+              <span class="pull-right-container">
+                  <i class="fa fa-angle-left pull-right"></i>
+                </span>
+            </a>
+            <ul class="treeview-menu">
+              <li><a href="{{ route('implementation.index') }}">Ver implementation</a></li>
+              <li><a href="{{ route('implementation.create') }}">Crear implementation</a></li>
+            </ul>
+          </li>
+          <li class="treeview">
+            <a href="#"><i class="fa fa-link"></i> <span>Varios</span>
+              <span class="pull-right-container">
+                  <i class="fa fa-angle-left pull-right"></i>
+                </span>
+            </a>
+            <ul class="treeview-menu">
+              <li><a href="{{ route('integrationtype.index') }}">Ver implementation</a></li>
+              <li><a href="{{ route('item.index') }}">Ver Items</a></li>
+            </ul>
+          </li>
+          <li class="treeview">
+            <a href="#"><i class="fa fa-link"></i> <span>Admin</span>
+              <span class="pull-right-container">
+                  <i class="fa fa-angle-left pull-right"></i>
+                </span>
+            </a>
+            <ul class="treeview-menu">
+              <li><a href="{{ route('integrationtype.create') }}">Crear implementation</a></li>
+              <li><a href="{{ route('item.create') }}">Crear Item</a></li>
+              <li><a href="{{ route('indexcreateuser') }}">Crear Usuario</a></li>
+              <li><a href="{{ route('getusers') }}">Ver Usuarios</a></li>
+>>>>>>> 69c87037fda93ae3ab0410951136c7d9ab4e5906
 
               </ul>
             </li>
@@ -252,6 +323,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 <input type="checkbox" class="pull-right" checked>
               </label>
 
+<<<<<<< HEAD
               <p>
                 Some information about this general settings option
               </p>
@@ -270,6 +342,25 @@ scratch. This page gets rid of all links and provides the needed markup only.
 @else
   
   
+=======
+            <p>
+              Some information about this general settings option
+            </p>
+          </div>
+          <!-- /.form-group -->
+        </form>
+      </div>
+      <!-- /.tab-pane -->
+    </div>
+  </aside>
+  <!-- /.control-sidebar -->
+  <!-- Add the sidebar's background. This div must be placed
+  immediately after the control sidebar -->
+  <div class="control-sidebar-bg"></div>
+</div>
+@else
+
+>>>>>>> 69c87037fda93ae3ab0410951136c7d9ab4e5906
   
 @endauth 
 <!-- ./wrapper -->

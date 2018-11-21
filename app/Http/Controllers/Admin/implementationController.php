@@ -13,6 +13,7 @@ use App\implementation;
 use App\detail_implementation;
 use App\payment_method_implementation;
 use DateTime;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class implementationController extends Controller
 {
@@ -93,6 +94,7 @@ class implementationController extends Controller
             $paymentmethodimplementation = payment_method_implementation::create(
                 $implementation->id,5);
         }
+        Alert::success('Excelente', 'Se creo la implementacion correctamente');
         return $this->index();
         
     }

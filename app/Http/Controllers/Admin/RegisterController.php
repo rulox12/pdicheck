@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Role;
 use Illuminate\Support\Facades\DB;
 use App\User;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class RegisterController extends Controller
 {
@@ -43,10 +44,26 @@ class RegisterController extends Controller
             $user->password = bcrypt('secret');
             $user->save();
             $user->roles()->attach($role_user);
-            return $this->index();
+            Alert::success('Excelente', 'Se registro correctamente');
+            return $this->getusers();
         }else{
+            Alert::info('Informacion', 'Ya existe un usuario creado con este correo');
             return $this->index();
         }
         
     }
+    public function getusers()
+    {
+        //dd($request);
+        $users = DB::table('users')
+        ->join('role_user as role_user', 'role_user.user_id', '=', 'users.id')
+        ->join('roles as rol', 'rol.id', '=', 'role_user.role_id')
+        ->select('users.*','rol.name AS role')
+        ->get();
+        //dd($users);
+        return view('auth.table',compact('users'));
+        
+    }
+
+
 }
