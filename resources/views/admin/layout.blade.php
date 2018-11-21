@@ -54,6 +54,47 @@ scratch. This page gets rid of all links and provides the needed markup only.
       <!-- Navbar Right Menu -->
       <div class="navbar-custom-menu">
         <ul class="nav navbar-nav">
+        <li class="dropdown notifications-menu">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+              <i class="fa fa-bell-o"></i>
+              <span class="label label-warning">10</span>
+            </a>
+            <ul class="dropdown-menu">
+              <li class="header">You have 10 notifications</li>
+              <li>
+                <!-- inner menu: contains the actual data -->
+                <ul class="menu">
+                  <li>
+                    <a href="#">
+                      <i class="fa fa-users text-aqua"></i> 5 new members joined today
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#">
+                      <i class="fa fa-warning text-yellow"></i> Very long description here that may not fit into the
+                      page and may cause design problems
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#">
+                      <i class="fa fa-users text-red"></i> 5 new members joined
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#">
+                      <i class="fa fa-shopping-cart text-green"></i> 25 sales made
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#">
+                      <i class="fa fa-user text-red"></i> You changed your username
+                    </a>
+                  </li>
+                </ul>
+              </li>
+              <li class="footer"><a href="#">View all</a></li>
+            </ul>
+          </li>
           <!-- User Account Menu -->
           <li class="dropdown user user-menu">
             <!-- Menu Toggle Button -->
@@ -75,7 +116,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 <img src="{{ asset('adminlte/img/user1.png') }}" class="img-circle" alt="User Image">
 
                 <p>
-                  @auth
+                @auth
                   {{ auth()->user()->name}} 
                 @else
                   no esta logueado
@@ -144,7 +185,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
             </a>
             <ul class="treeview-menu">
               <li><a href="{{ route('implementation.index') }}">Ver implementation</a></li>
-              <li><a href="{{ route('implementation.create') }}">Crear implementation</a></li>
+              @if(auth()->user()->hasRole('leader') || auth()->user()->hasRole('admin') )
+                <li><a href="{{ route('implementation.create') }}">Crear implementation</a></li>
+              @endif
             </ul>
           </li>
           <li class="treeview">
@@ -158,6 +201,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
               <li><a href="{{ route('item.index') }}">Ver Items</a></li>
             </ul>
           </li>
+          @if(auth()->user()->hasRole('admin'))
           <li class="treeview">
             <a href="#"><i class="fa fa-link"></i> <span>Admin</span>
               <span class="pull-right-container">
@@ -172,6 +216,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
             </ul>
           </li>
+          @endif
         </ul>
       @endauth  
       <!-- /.sidebar-menu -->

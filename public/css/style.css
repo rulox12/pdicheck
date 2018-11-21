@@ -1,15 +1,19 @@
 .skin-blue .main-header .navbar {
-    background-color: #60bc3c;
+    background-color: #72D54A;
 }
 
 .skin-blue .main-header .logo{
-    background-color: #60bc3c;
+    background-color: #72D54A;
 }
 
 .skin-blue.layout-top-nav .main-header>.logo:hover{
-    background-color: #60bc3c;
+    background-color: #72D54A;
+}
+
+.skin-blue .main-header li.user-header {
+    background-color: #72D54A;
 }
 
 .skin-blue .main-sidebar{
-    background-color: #6a6e70;
+    background-color: #646469;
 }
