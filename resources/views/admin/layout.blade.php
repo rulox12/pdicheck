@@ -8,7 +8,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <head>
   <meta charset="utf-8">
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-  <title>PDIcheck</title>
+  <title>Implementacion</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <link rel="stylesheet" href="{{ asset('adminlte/bower_components/bootstrap/dist/css/bootstrap.min.css') }}">
@@ -42,7 +42,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
       <!-- mini logo for sidebar mini 50x50 pixels -->
       <span class="logo-mini"><b>P</b>DI</span>
       <!-- logo for regular state and mobile devices -->
-      <span class="logo-lg"><b>PDI</b>check</span>
+      <span class="logo-lg"><b>Implementacion</b></span>
     </a>
 
     <!-- Header Navbar -->
@@ -149,8 +149,19 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <ul class="treeview-menu">
               <li><a href="{{ route('integrationtype.index') }}">Ver implementation</a></li>
               <li><a href="{{ route('item.index') }}">Ver Items</a></li>
+            </ul>
+          </li>
+          <li class="treeview">
+            <a href="#"><i class="fa fa-link"></i> <span>Admin</span>
+              <span class="pull-right-container">
+                  <i class="fa fa-angle-left pull-right"></i>
+                </span>
+            </a>
+            <ul class="treeview-menu">
               <li><a href="{{ route('integrationtype.create') }}">Crear implementation</a></li>
               <li><a href="{{ route('item.create') }}">Crear Item</a></li>
+              <li><a href="{{ route('indexcreateuser') }}">Crear Usuario</a></li>
+
             </ul>
           </li>
         </ul>

@@ -1,88 +1,66 @@
 @extends('admin.layout')
 
 @section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Register') }}</div>
 
-                <div class="card-body">
-                    <form method="POST" action="{{ route('register') }}">
+  <div class="content-fluid">
+      <!-- Content Header (Page header) -->
+      @section('Page header')
+        <section class="content-header">
+          <h1>
+            Items
+          </h1>
+        </section>
+      @endsection
+      <!-- Main content -->
+      <section class="content">
+        <div class="row">
+          <!-- left column -->
+          <div class="col-md-12">
+            <!-- general form elements -->
+            <div class="box box-primary">
+              <div class="box-header with-border">
+                <h3 class="box-title">Crear Item</h3>
+              </div>
+
+              @if ($errors->any())
+                <div class="alert alert-danger">
+                  <ul>
+                      @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                      @endforeach
+                  </ul>
+                </div><br />
+              @endif
+              <form method="POST" action="{{ route('createuser') }}" role="form">
+                <div class="box-body">
+                  <div class="form-group">
                         @csrf
-
-                        <div class="form-group row">
-                            <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Nombre') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="name" type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="name" value="{{ old('name') }}" required autofocus>
-                                
-                                @if ($errors->has('name'))
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('name') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('Email') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" required>
-
-                                @if ($errors->has('email'))
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('email') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label for="rol" class="col-md-4 col-form-label text-md-right">{{ __('Rol') }}</label>
-
-                            <div class="col-md-6">
-                                <select type="text" class="form-control" name="rol" required >
-                                    @foreach ($rols as $item)
-                                        <option name ="id_rol" value="{{ $item->id }}">{{ $item->name  }}</option>
-                                    @endforeach
-                                  </select>
-                            </div>
-                        </div>
-                        
-                        <div class="form-group row">
-                            <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Contraseña') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="password" type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" required>
-
-                                @if ($errors->has('password'))
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('password') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('Confirmacion Contraseña') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
-                            </div>
-                        </div>
-
-                        <div class="form-group row mb-0">
-                            <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
-                                    {{ __('Register') }}
-                                </button>
-                            </div>
-                        </div>
-                    </form>
+                    <label for="exampleInputPassword1">Nombre: </label>
+                    <input type="text" class="form-control" name="name" placeholder="nombre">
+                  </div>
+                  <div class="form-group">
+                    <label for="exampleInputPassword1">Correo: </label>
+                    <input type="text" class="form-control" name="email" placeholder="nombre">
+                  </div>
+                  <div class="form-group">
+                        @csrf
+                        <label for="name">Rol: </label>
+                        <select type="text" class="form-control" name="idRol" required >
+                          @foreach ($rols as $item)
+                              <option name ="id_commerce" value="{{ $item->name }}">{{ $item->name  }}</option>
+                          @endforeach
+                        </select>
+                      </div>
                 </div>
+                <div class="box-footer">
+                  <button type="submit" class="btn btn-primary">Crear User</button>
+                </div>
+              </form>
             </div>
+          </div>
         </div>
+        <!-- /.row -->
+      </section>
+      <!-- /.content -->
     </div>
-</div>
 @endsection

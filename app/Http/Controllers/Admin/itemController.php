@@ -50,7 +50,7 @@ class itemController extends Controller
         $item->id_payment_methods =$request->get('commerce');
         $item->description =$request->get('name');
         $item->save();
-        $this->index();
+        return $this->index();
     }
 
     /**

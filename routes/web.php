@@ -33,7 +33,8 @@ Route::resource('implementation', 'admin\implementationController');
 Route::resource('pdf', 'admin\pdfController');
 
 
-Route::get('/registeruser', 'Auth\RegisterController@index');
+Route::get('/register', 'admin\RegisterController@create')->name('indexcreateuser');
+Route::post('/registeruser', 'admin\RegisterController@store')->name('createuser');
 
 
 Route::get('/pdft', function(){
