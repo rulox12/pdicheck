@@ -5,3 +5,11 @@
 .skin-blue .main-header .logo{
     background-color: #60bc3c;
 }
+
+.skin-blue.layout-top-nav .main-header>.logo:hover{
+    background-color: #60bc3c;
+}
+
+.skin-blue .main-sidebar{
+    background-color: #6a6e70;
+}
