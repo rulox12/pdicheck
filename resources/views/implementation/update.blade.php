@@ -29,6 +29,9 @@
                 <a href="{{ route('pdf.show', $implementation[0]->id_implementation) }}" class="btn btn-success btn-sm ad-click-event">
                     Exportar PDF
                 </a>
+                <a href="{{ route('return.show', $implementation[0]->id_implementation) }}" class="btn btn-danger btn-sm ad-click-event">
+                  Devolver
+              </a>
               </p>
             </div>
             @if ($errors->any())

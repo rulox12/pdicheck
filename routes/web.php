@@ -28,9 +28,11 @@ Route::resource('item', 'Admin\itemController');
 
 Route::resource('integrationtype', 'Admin\typeIntegrationController');
 
-Route::resource('implementation', 'admin\implementationController');
+Route::resource('implementation', 'Admin\implementationController');
 
-Route::resource('pdf', 'admin\pdfController');
+Route::resource('pdf', 'Admin\pdfController');
+
+Route::resource('return', 'Admin\returController');
 
 
 Route::get('/register', 'admin\RegisterController@create')->name('indexcreateuser');

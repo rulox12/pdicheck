@@ -29,7 +29,7 @@
             <td class="progress progress-sm active">
             <div class="progress-bar progress-bar-success progress-bar-striped" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: {{ $item->progress }}%; color: black">
               <b>{{ $item->progress }}%</b>
-              <span class="sr-only">40% Complete (success)</span>
+              <span class="sr-only">{{ $item->progress }}% Complete (success)</span>
 
             </div>
             </td>
